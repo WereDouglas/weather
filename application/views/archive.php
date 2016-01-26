@@ -8,70 +8,70 @@
 <link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap.min.css" />
 <link href="<?= base_url(); ?>css/mine.css" rel="stylesheet" />
 <style>
-    
-   #one,#two,#three
-{
-    height:30px;
-    width:300px;
-    border:1px solid #69CDF5;
-    background-color:cornsilk;
-    margin: 0px 5px;
-    overflow:hidden;
-}
 
-.arrow
-{
-    padding:5px;
-    float:right;
-    color:#69CDF5;
-}
-.sub
-{
-    height:200px;
-    width:280px;
-   display:none;
-    border:1px solid #69CDF5;
-    background-color:cornsilk;
-    margin:0px 5px 5px;
-    padding:10px;
-   
-   
-}
-#one p,#two p,#three p
-{
-padding:5px;
+    #one,#two,#three
+    {
+        height:30px;
+        width:300px;
+        border:1px solid #69CDF5;
+        background-color:cornsilk;
+        margin: 0px 5px;
+        overflow:hidden;
+    }
 
-}
-.sub img
-{
-    margin:25px 5px;
-    
-}
+    .arrow
+    {
+        padding:5px;
+        float:right;
+        color:#69CDF5;
+    }
+    .sub
+    {
+        height:200px;
+        width:280px;
+        display:none;
+        border:1px solid #69CDF5;
+        background-color:cornsilk;
+        margin:0px 5px 5px;
+        padding:10px;
 
-#divLargerImage
-{
-    display: none;
-    width: 250px;
-    height: 250px;
-    position: absolute;
-    top: 35%;
-    left: 35%;
-    z-index: 99;
-}
 
-#divOverlay
-{
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #CCC;
-    opacity: 0.5;
-    width: 100%;
-    height: 100%;
-    z-index: 98;
-} 
-    
+    }
+    #one p,#two p,#three p
+    {
+        padding:5px;
+
+    }
+    .sub img
+    {
+        margin:25px 5px;
+
+    }
+
+    #divLargerImage
+    {
+        display: none;
+        width: 250px;
+        height: 250px;
+        position: absolute;
+        top: 35%;
+        left: 35%;
+        z-index: 99;
+    }
+
+    #divOverlay
+    {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #CCC;
+        opacity: 0.5;
+        width: 100%;
+        height: 100%;
+        z-index: 98;
+    } 
+
 </style>
 
 <div class="row-fluid">
@@ -85,7 +85,7 @@ padding:5px;
                             <i class="icon-file icon-2x green"></i>
                             Files & Archive
                         </h4>
-                          <?php echo $this->session->flashdata('msg'); ?>
+                        <?php echo $this->session->flashdata('msg'); ?>
 
                         <div class="widget-toolbar no-border">
                             <ul class="nav nav-tabs" id="recent-tab">
@@ -96,8 +96,6 @@ padding:5px;
                                 <li>
                                     <a data-toggle="tab" href="#member-tab">View All</a>
                                 </li>
-
-
                             </ul>
                         </div>
                     </div>
@@ -111,7 +109,7 @@ padding:5px;
                                         <div class="widget-body">
                                             <div class="widget-main">
 
-                                                <div class="span6">
+                                                <div class="span4">
                                                     <form id="station-form" name="station-form" enctype="multipart/form-data"  action='<?= base_url(); ?>index.php/archive/save'  method="post">            
 
                                                         <div class="well well-large"> 
@@ -139,9 +137,6 @@ padding:5px;
                                                                 }
                                                                 ?>
                                                             </select>
-
-
-
                                                             <div class="widget-body">
                                                                 <div class="widget-main">
 <!--													<input type="file" id="id-input-file-2" />-->
@@ -187,21 +182,11 @@ padding:5px;
                                                         </div>
                                                     </form>
 
-
                                                     <fieldset>
-
-
-
-
-
-
-
-
-
                                                     </fieldset>
 
                                                 </div>
-                                                <div class="widget-box span6">
+                                                <div class="widget-box span4">
                                                     <div class="widget-header header-color-green2">
                                                         <h4 class="lighter smaller">Browse Files</h4>
                                                     </div>
@@ -291,18 +276,11 @@ padding:5px;
                                                     }
                                                 }
                                                 ?>
-
-
-
                                             </tbody>
                                         </table>     
 
                                     </div>
                                     <div id="divLargerImage"></div>
-
-
-
-
                                     <div class="hr hr-double hr8"></div>
                                 </div><!--member-tab-->
 
@@ -317,7 +295,7 @@ padding:5px;
         <!--PAGE CONTENT ENDS-->
     </div><!--/.span-->
 </div><!--/.row-fluid-->
-    <!-- let's call the following div as the POPUP FRAME -->
+<!-- let's call the following div as the POPUP FRAME -->
 
 </div><!--/.page-content-->
 
@@ -327,129 +305,129 @@ padding:5px;
 
 <?php require_once(APPPATH . 'views/footer_instrument.php'); ?>
 <script type="text/javascript">
-            var DataSourceTree = function(options) {
-            this._data = options.data;
-                    this._delay = options.delay;
-                    }
+    var DataSourceTree = function (options) {
+        this._data = options.data;
+        this._delay = options.delay;
+    }
 
-    DataSourceTree.prototype.data = function(options, callback) {
-    var self = this;
-            var $data = null;
-            if (!("name" in options) && !("type" in options)){
-    $data = this._data; //the root tree
-            callback({ data: $data });
+    DataSourceTree.prototype.data = function (options, callback) {
+        var self = this;
+        var $data = null;
+        if (!("name" in options) && !("type" in options)) {
+            $data = this._data; //the root tree
+            callback({data: $data});
             return;
-    }
-    else if ("type" in options && options.type == "folder") {
-    if ("additionalParameters" in options && "children" in options.additionalParameters)
-            $data = options.additionalParameters.children;
-            else $data = {}//no data
+        }
+        else if ("type" in options && options.type == "folder") {
+            if ("additionalParameters" in options && "children" in options.additionalParameters)
+                $data = options.additionalParameters.children;
+            else
+                $data = {}//no data
+        }
+
+        if ($data != null)//this setTimeout is only for mimicking some random delay
+            setTimeout(function () {
+                callback({data: $data});
+            }, parseInt(Math.random() * 500) + 200);
+        //we have used static data here
+        //but you can retrieve your data dynamically from a server using ajax call
+        //checkout examples/treeview.html and examples/treeview.js for more info
+    };
+    var tree_data = {
+        'for-sale': {name: 'For Sale', type: 'folder'},
+        'vehicles': {name: 'Vehicles', type: 'folder'},
+        'rentals': {name: 'Rentals', type: 'folder'},
+        'real-estate': {name: 'Real Estate', type: 'folder'},
+        'pets': {name: 'Pets', type: 'folder'},
+        'tickets': {name: 'Tickets', type: 'item'},
+        'services': {name: 'Services', type: 'item'},
+        'personals': {name: 'Personals', type: 'item'}
     }
 
-    if ($data != null)//this setTimeout is only for mimicking some random delay
-            setTimeout(function(){callback({ data: $data }); }, parseInt(Math.random() * 500) + 200);
-            //we have used static data here
-            //but you can retrieve your data dynamically from a server using ajax call
-            //checkout examples/treeview.html and examples/treeview.js for more info
-            };
-            var tree_data = {
-            'for-sale' : {name: 'For Sale', type: 'folder'},
-                    'vehicles' : {name: 'Vehicles', type: 'folder'},
-                    'rentals' : {name: 'Rentals', type: 'folder'},
-                    'real-estate' : {name: 'Real Estate', type: 'folder'},
-                    'pets' : {name: 'Pets', type: 'folder'},
-                    'tickets' : {name: 'Tickets', type: 'item'},
-                    'services' : {name: 'Services', type: 'item'},
-                    'personals' : {name: 'Personals', type: 'item'}
-            }
- 
 
-    
+
 
     var treeDataSource = new DataSourceTree({data: tree_data});
-            var tree_data_2 = {
+    var tree_data_2 = {
+        'documents': {name: 'FILES', type: 'folder', 'icon-class': 'green'}
 
+    }
 
-           
-                    'documents' : {name: 'FILES', type: 'folder', 'icon-class':'green'}
-                   
-            }
-    
 
     tree_data_2['documents']['additionalParameters'] = {
-    'children' : [
-           <?php
+        'children': [
+<?php
 if (is_array($files) && count($files)) {
     foreach ($files as $loop) {
         ?>
-                 {name: '<i class="icon-file-text red"></i><a href="#"><img height="30px" width="30px" src="<?= base_url();?>/archive/<?=$loop->file;?>"/></a><a href="#"><?php echo $loop->station.' '.$loop->period; ?></a>', type: 'item'},   
-        <?php }} ?>
-        
-    
-    ]
-            }
+                    {name: '<i class="icon-file-text red"></i><a href="#"><img height="30px" width="30px" src="<?= base_url(); ?>/archive/<?= $loop->file; ?>"/></a><a href="#"><?php echo $loop->station . ' ' . $loop->period; ?></a>', type: 'item'},
+    <?php }
+} ?>
 
-   
-            
+
+        ]
+    }
+
+
+
     var treeDataSource2 = new DataSourceTree({data: tree_data_2});
-        
+
 
 </script>
 <script src="<?= base_url(); ?>assets/js/fuelux/fuelux.tree.min.js"></script>
 
 <script type="text/javascript">
-            $(function () {
+    $(function () {
 
-            $('#tree1').ace_tree({
+        $('#tree1').ace_tree({
             dataSource: treeDataSource,
-                    multiSelect: true,
-                    loadingHTML: '<div class="tree-loading"><i class="icon-refresh icon-spin blue"></i></div>',
-                    'open-icon': 'icon-minus',
-                    'close-icon': 'icon-plus',
-                    'selectable': true,
-                    'selected-icon': 'icon-ok',
-                    'unselected-icon': 'icon-remove'
-            });
-                    $('#tree2').ace_tree({
+            multiSelect: true,
+            loadingHTML: '<div class="tree-loading"><i class="icon-refresh icon-spin blue"></i></div>',
+            'open-icon': 'icon-minus',
+            'close-icon': 'icon-plus',
+            'selectable': true,
+            'selected-icon': 'icon-ok',
+            'unselected-icon': 'icon-remove'
+        });
+        $('#tree2').ace_tree({
             dataSource: treeDataSource2,
-                    loadingHTML: '<div class="tree-loading"><i class="icon-refresh icon-spin blue"></i></div>',
-                    'open-icon': 'icon-folder-open',
-                    'close-icon': 'icon-folder-close',
-                    'selectable': false,
-                    'selected-icon': null,
-                    'unselected-icon': null
-            });
-                    /**
-                     $('#tree1').on('loaded', function (evt, data) {
-                     });
-                     
-                     $('#tree1').on('opened', function (evt, data) {
-                     });
-                     
-                     $('#tree1').on('closed', function (evt, data) {
-                     });
-                     
-                     $('#tree1').on('selected', function (evt, data) {
-                     });
-                     */
-            });</script>
+            loadingHTML: '<div class="tree-loading"><i class="icon-refresh icon-spin blue"></i></div>',
+            'open-icon': 'icon-folder-open',
+            'close-icon': 'icon-folder-close',
+            'selectable': false,
+            'selected-icon': null,
+            'unselected-icon': null
+        });
+        /**
+         $('#tree1').on('loaded', function (evt, data) {
+         });
+         
+         $('#tree1').on('opened', function (evt, data) {
+         });
+         
+         $('#tree1').on('closed', function (evt, data) {
+         });
+         
+         $('#tree1').on('selected', function (evt, data) {
+         });
+         */
+    });</script>
 
 <script type="text/javascript">
 
 
-$('a img').click(function () {
-    var $img = $(this);
-    $('#divLargerImage').html($img.clone().height(250).width(250)).add($('#divOverlay')).fadeIn();
-});
-
-$('#divLargerImage').add($('#divOverlay')).click(function () {
-    $('#divLargerImage').add($('#divOverlay')).fadeOut(function () {
-        $('#divLargerImage').empty();
+    $('a img').click(function () {
+        var $img = $(this);
+        $('#divLargerImage').html($img.clone().height(250).width(250)).add($('#divOverlay')).fadeIn();
     });
-});
-    
+
+    $('#divLargerImage').add($('#divOverlay')).click(function () {
+        $('#divLargerImage').add($('#divOverlay')).fadeOut(function () {
+            $('#divLargerImage').empty();
+        });
+    });
+
 
 
 </script>
 
-    
