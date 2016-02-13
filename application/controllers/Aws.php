@@ -124,13 +124,16 @@ class Aws extends CI_Controller {
 
         $this->load->helper(array('form', 'url'));
         $json = $this->input->post('information');
+        if ($json == "") {
+            echo "NO INFORMATION SENT THROUGH";
+        } else {
+            $object = json_decode($json);
 
-        $object = json_decode($json);
-       
-       // print_r($object);
-     
-        $this->Md->save($object, 'aws');
-         echo "saved";
+            // print_r($object);
+
+            $this->Md->save($object, 'aws');
+            echo "saved";
+        }
     }
 
     public function get() {
