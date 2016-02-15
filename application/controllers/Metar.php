@@ -46,6 +46,72 @@ class Metar extends CI_Controller {
 
         $this->load->view('metar', $data);
     }
+    
+    
+     public function view_metar() {
+
+        $query = $this->Md->show('metar');
+        //  var_dump($query);
+        if ($query) {
+            $data['users'] = $query;
+        } else {
+            $data['users'] = array();
+        }
+        $query = $this->Md->show('role');
+        if ($query) {
+            $data['roles'] = $query;
+        } else {
+            $data['roles'] = array();
+        }
+        $query = $this->Md->show('station');
+        if ($query) {
+            $data['stations'] = $query;
+        } else {
+            $data['stations'] = array();
+        }
+        // get($field,$value,$table)
+        $query = $this->Md->get('day', date('Y-m-d'), 'metar');
+        if ($query) {
+            $data['metas'] = $query;
+        } else {
+            $data['metas'] = array();
+        }
+
+        $this->load->view('view-metar', $data);
+    }
+    
+    
+      public function add_metar() {
+
+        $query = $this->Md->show('metar');
+        //  var_dump($query);
+        if ($query) {
+            $data['users'] = $query;
+        } else {
+            $data['users'] = array();
+        }
+        $query = $this->Md->show('role');
+        if ($query) {
+            $data['roles'] = $query;
+        } else {
+            $data['roles'] = array();
+        }
+        $query = $this->Md->show('station');
+        if ($query) {
+            $data['stations'] = $query;
+        } else {
+            $data['stations'] = array();
+        }
+        // get($field,$value,$table)
+        $query = $this->Md->get('day', date('Y-m-d'), 'metar');
+        if ($query) {
+            $data['metas'] = $query;
+        } else {
+            $data['metas'] = array();
+        }
+
+        $this->load->view('add-metar', $data);
+    }
      public function report() {
 
              
@@ -102,7 +168,47 @@ class Metar extends CI_Controller {
             $data['metas'] = array();
         }
 
-        $this->load->view('daily', $data);
+        $this->load->view('add-daily-weather', $data);
+    }
+    
+    
+     public function rainfall_records() {
+
+        $query = $this->Md->show('metar');
+        //  var_dump($query);
+        if ($query) {
+            $data['users'] = $query;
+        } else {
+            $data['users'] = array();
+        }
+        $query = $this->Md->get('station', $this->session->userdata('stationname'), 'daily');
+        //  var_dump($query);
+        if ($query) {
+            $data['daily'] = $query;
+        } else {
+            $data['daily'] = array();
+        }
+        $query = $this->Md->show('role');
+        if ($query) {
+            $data['roles'] = $query;
+        } else {
+            $data['roles'] = array();
+        }
+        $query = $this->Md->show('station');
+        if ($query) {
+            $data['stations'] = $query;
+        } else {
+            $data['stations'] = array();
+        }
+        // get($field,$value,$table)
+        $query = $this->Md->get('day', date('Y-m-d'), 'metar');
+        if ($query) {
+            $data['metas'] = $query;
+        } else {
+            $data['metas'] = array();
+        }
+
+        $this->load->view('view-daily-weather', $data);
     }
 
     public function rainfall() {
@@ -140,7 +246,45 @@ class Metar extends CI_Controller {
             $data['metas'] = array();
         }
 
-        $this->load->view('rain', $data);
+        $this->load->view('add-rainfall', $data);
+    }
+    
+      public function view_rainfall() {
+
+        $query = $this->Md->show('metar');
+        //  var_dump($query);
+        if ($query) {
+            $data['users'] = $query;
+        } else {
+            $data['users'] = array();
+        }
+        $query = $this->Md->show('role');
+        if ($query) {
+            $data['roles'] = $query;
+        } else {
+            $data['roles'] = array();
+        }
+        $query = $this->Md->show('station');
+        if ($query) {
+            $data['stations'] = $query;
+        } else {
+            $data['stations'] = array();
+        }
+        $query = $this->Md->show('rain');
+        if ($query) {
+            $data['rain'] = $query;
+        } else {
+            $data['rain'] = array();
+        }
+        // get($field,$value,$table)
+        $query = $this->Md->get('day', date('Y-m-d'), 'metar');
+        if ($query) {
+            $data['metas'] = $query;
+        } else {
+            $data['metas'] = array();
+        }
+
+        $this->load->view('view-rainfall', $data);
     }
 
     public function save() {

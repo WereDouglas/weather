@@ -156,10 +156,8 @@ iframe {
 .ace-nav > li {
     line-height: 100%;
 }
-.ace-nav > li a {
-   
-    max-height: 100%;
-   
+.ace-nav > li a {   
+    max-height: 100%;   
 }
 select {
     width: 125px;
@@ -171,7 +169,9 @@ input, textarea, .uneditable-input {
 }
 .scroll {
   overflow:auto;
+   overflow-x:scroll;
   padding-right: 1%;
+  scrollbar-base-color:#ffeaff;
 }
 .menu-me {
   margin-top: 2%;
