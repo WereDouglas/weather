@@ -129,7 +129,7 @@
                                                                 <a href="#"><?= $loop->form ?></a>
                                                             </td>
                                                             <td>
-                                                                <a href="#"><?= $loop->name ?></a>
+                                                                <a href="<?php echo base_url() . "archive/" . $loop->file; ?>"><?= $loop->name ?></a>
                                                             </td>
 
                                                             <td class="hidden-480"><?= $loop->station ?></td>
@@ -139,7 +139,7 @@
                                                                 <span class="label label-success"><?= $loop->description ?></span>
                                                             </td>
                                                             <td><?= $loop->submitted ?></td>
-                                                            <td><?= $loop->file ?></td>
+                                                            <td><a href="<?php echo base_url() . "archive/" . $loop->file; ?>"><?= $loop->file ?></a></td>
 
 
 

@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap.min.css" />
 <link href="<?= base_url(); ?>css/mine.css" rel="stylesheet" />
 
-<div class="main-container container-fluid">
+<div class="main-container container-fluid scroll">
     <div class="page-content">       
         <div class="row-fluid">
             <div class="span12">

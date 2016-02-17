@@ -18,7 +18,7 @@
         <h4>Form No.6a(Rev.12/2012)</h4>
 
         <?php echo $this->session->flashdata('msg'); ?>
-<div class="scroll row-fluid">
+
     <?php  if ($role == 'Observer'||$role == 'Manager') {  ?>
         <form id="edit-form" name="edit-form" enctype="multipart/form-data"  action='<?= base_url(); ?>index.php/metar/save'  method="post">            
 
@@ -46,7 +46,7 @@
                 
                         </select>
                 </div>
-                <div class="span3">
+                <div class="span2">
                     <label >Station No  </label >
                     <input class="form-control"  id="number" readonly="" name="number" ></input>   
                 </div>
@@ -85,7 +85,7 @@
    <?php }?>
 </div>    
 </div>   
-</div> 
+
           </div> 
      </div> 
 
