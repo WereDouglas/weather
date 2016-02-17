@@ -24,10 +24,8 @@
                                 <!--\\\\\\\ wrapper Start \\\\\\-->
                                 <div class="header_bar">
                                     <!--\\\\\\\ header Start \\\\\\-->
-                                    <div class="brand">
-                                        <!--\\\\\\\ brand Start \\\\\\-->
-                                        <div class="logo" style="display:block"><span class="theme_color">ULTIMO</span> Admin</div>
-                                        <div class="small_logo" style="display:none"><img src="<?= base_url() ?>images/WIMEA LOGO.png" width="50" height="47" alt="s-logo" /> <img src="images/r-logo.png" width="122" height="20" alt="r-logo" /></div>
+                                    <div class="brand">                                       
+                                        <div > <img src="<?= base_url() ?>images/WIMEA LOGO.png" width="210" height="65" alt="r-logo" /></div>
                                     </div>
                                     <!--\\\\\\\ brand end \\\\\\-->
                                     <div class="header_top_bar">
@@ -155,16 +153,8 @@
                                                       <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/add_metar/"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Metar</b> </a> </li>
                                                        
                                                         <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/rainfall"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Periodic Rainfall</b> </a> </li>
-                                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Metar</b> </a> </li>
-                                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/archive"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Archive</b> </a> </li>
-                                                        <li> <a href="grid.html"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Grid</b> </a> </li>
-                                                        <li> <a href="alert.html"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Alert & Notification</b> </a> </li>
-                                                        <li> <a href="tabs.html"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Tabs & Accordion</b> </a> </li>
-                                                        <li> <a href="tree.html"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Tree View</b> </a> </li>
-                                                        <li> <a href="list.html"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>List Group</b> </a> </li>
-                                                        <li> <a href="portlets.html"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Portlets</b> </a> </li>
-                                                        <li> <a href="general.html"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>General</b> </a> </li>
-                                                    </ul>
+                                                         <li> <a target="myframe" href="<?php echo base_url() . "index.php/archive"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Archive</b> </a> </li>
+                                                                              </ul>
                                                 </li>
                                                 <li> <a href="javascript:void(0);"> <i class="fa fa-tasks"></i>INPUT REPORTS<span class="plus"><i class="fa fa-plus"></i></span></a>
                                                     <ul>
@@ -172,28 +162,16 @@
                                                          <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/view_metar"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Metar</b> </a> </li>
                                                         <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/view_rainfall"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Periodic Rainfall</b> </a> </li>
                                                        
-                                                         <li> <a href="multi-upload.html"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Multi-upload</b> </a> </li>
-                                                        <li> <a href="other-forms.html"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Others</b> </a> </li>
-                                                    </ul>
+                                                               </ul>
                                                 </li>
                                                 <li> <a href="javascript:void(0);"> <i class="fa fa-users icon"></i> APPS <span class="plus"><i class="fa fa-plus"></i></span> </a>
                                                     <ul>
-                                                        <li> <a href="todo.html"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>To-Do</b> </a> </li>
-                                                        <li> <a href="task.html"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Task</b> </a> </li>
-                                                        <li> <a href="notes.html"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Notes</b> </a> </li>
-                                                        <li> <a href="media.html"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Media Manager</b> </a> </li>
-                                                        <li> <a href="calendar.html"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Calendar</b> </a> </li>
-                                                        <li> <a href="ticket.html"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Ticket Support</b> </a> </li>
-                                                        <li> <a href="invoice.html"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Invoice</b> </a> </li>
-                                                    </ul>
+                                                       
+                                                        <li> <a href="<?php echo base_url() . "file/Wimea.msi"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Desktop</b> </a> </li>
+                                                        <li> <a href="<?php echo base_url() . "file/Wimea.apk"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Mobile</b> </a> </li>
+                                                          </ul>
                                                 </li>
-                                                <li> <a href="javascript:void(0);"> <i class="fa fa-envelope"></i> EMAIL <span class="plus"><i class="fa fa-plus"></i></span> </a>
-                                                    <ul>
-                                                        <li> <a href="inbox.html"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Inbox</b> </a> </li>
-                                                        <li> <a href="compose.html"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Compose</b> </a> </li>
-                                                        <li> <a href="readmail.html"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Read Mail</b> </a> </li>
-                                                    </ul>
-                                                </li>
+                                               
                                                 <li> <a href="javascript:void(0);"> <i class="fa fa-folder-open-o"></i>REPORTS<span class="plus"><i class="fa fa-plus"></i></span> </a>
                                                     <ul>
                                                         <li> <a target="myframe" href="<?php echo base_url() . "index.php/aws/"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>AWS</b> </a> </li>
@@ -205,7 +183,7 @@
                                                         <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/report"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Metar information</b> </a> </li>
                                                     </ul>
                                                 </li>
-                                                <li> <a href="javascript:void(0);"> <i class="fa fa-th"></i> TABLES <span class="plus"><i class="fa fa-plus"></i></span> </a>
+                                                <li> <a href="javascript:void(0);"> <i class="fa fa-th"></i> SYNOPTICS <span class="plus"><i class="fa fa-plus"></i></span> </a>
                                                     <ul>
                                                         <li>
                                                             <a target="myframe" href="<?php echo base_url() . "index.php/synoptic/"; ?>">Tabular</a>
@@ -214,7 +192,7 @@
                                                             <a target="myframe" href="<?php echo base_url() . "index.php/synoptic/tab"; ?>">Tabbed</a>
                                                         </li>  </ul>
                                                 </li>
-                                                <li> <a href="javascript:void(0);"> <i class="fa fa-glass"></i> EXTRA <span class="plus"><i class="fa fa-plus"></i></span></a>
+                                                <li> <a href="javascript:void(0);"> <i class="fa fa-glass"></i> SETTINGS <span class="plus"><i class="fa fa-plus"></i></span></a>
                                                     <ul>
                                                         <li>
                                                             <a target="myframe" href="<?php echo base_url() . "index.php/station"; ?>">Stations</a>
@@ -242,14 +220,6 @@
                                                             </a>
                                                         </li>
 
-                                                        <li>
-                                                            <a  href="<?php echo base_url() . "file/Wimea.msi"; ?>">Desktop </i>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a  href="<?php echo base_url() . "file/Wimea.apk"; ?>">Mobile app </i>
-                                                            </a>
-                                                        </li>
                                                     </ul>
                                                 </li>
                                             </ul>
