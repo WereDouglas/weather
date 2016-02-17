@@ -51,15 +51,15 @@
                             </ul>
                         </div>
                     </div>
-                     <div class="top_right_bar">
+                    <div class="top_right_bar">
                         <div class="top_right">
                             <div class="top_right_menu">
                                 <ul>                                 
-                                   
+
                                     <li class="dropdown"> 
-                                            <div class="top_pointer"></div>
-                                                <div class="box"> <a target="myframe" href="<?php echo base_url() . "index.php/Welcome/schedule"; ?>"> <span class="block primery_2"> <i class="fa fa-calendar-o"></i> </span> <span class="block_text">Calendar</span> </a> </div>
-                                               
+                                        <div class="top_pointer"></div>
+                                        <div class="box"> <a target="myframe" href="<?php echo base_url() . "index.php/Welcome/schedule"; ?>"> <span class="block primery_2"> <i class="fa fa-calendar-o"></i> </span> <span class="block_text">Calendar</span> </a> </div>
+
                                     </li>
                                 </ul>
                             </div>
@@ -82,7 +82,10 @@
             </div>
             <!--\\\\\\\ header end \\\\\\-->
             <div class="inner">
-                
+                <!--\\\\\\\ inner start \\\\\\--><div class="left_nav">
+
+                    <!--\\\\\\\left_nav start \\\\\\-->
+
                     <div class="left_nav_slidebar">
                         <ul>
                             <li class="left_nav_active theme_border"><a href="javascript:void(0);"><i class="fa fa-home"></i> DASHBOARD <span class="left_nav_pointer"></span> <span class="plus"><i class="fa fa-plus"></i></span> </a>
@@ -98,7 +101,7 @@
                                     <li> <a href="<?php echo base_url() . "index.php/metar/everyday"; ?>" target="myframe"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Daily weather</b> </a> </li>
                                     <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/add_metar/"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Metar</b> </a> </li>
                                     <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/rainfall"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Periodic Rainfall</b> </a> </li>
-                                    <li> <a target="myframe" href="<?php echo base_url() . "index.php/archive"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Archive</b> </a> </li>
+                                    <li> <a target="myframe" href="<?php echo base_url() . "index.php/archive/add_archive"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Archive</b> </a> </li>
                                 </ul>
                             </li>
                             <li> <a href="javascript:void(0);"> <i class="fa fa-tasks"></i>INPUT REPORTS<span class="plus"><i class="fa fa-plus"></i></span></a>
@@ -106,6 +109,7 @@
                                     <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/rainfall_records"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Daily weather</b> </a> </li>
                                     <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/view_metar"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Metar</b> </a> </li>
                                     <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/view_rainfall"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Periodic Rainfall</b> </a> </li>
+                                    <li> <a target="myframe" href="<?php echo base_url() . "index.php/archive"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Archive</b> </a> </li>
 
                                 </ul>
                             </li>
@@ -131,21 +135,21 @@
                             <li> <a href="javascript:void(0);"> <i class="fa fa-th"></i> SYNOPTICS <span class="plus"><i class="fa fa-plus"></i></span> </a>
                                 <ul>
                                     <li> <a target="myframe" href="<?php echo base_url() . "index.php/synoptic/tab"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Tabbed</b> </a> </li>
-                             <li> <a target="myframe" href="<?php echo base_url() . "index.php/synoptic/"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Table</b> </a> </li>
-                            
-                                      </ul>
+                                    <li> <a target="myframe" href="<?php echo base_url() . "index.php/synoptic/"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Table</b> </a> </li>
+
+                                </ul>
                             </li>
                             <li> <a href="javascript:void(0);"> <i class="fa fa-cog"></i> SETTINGS <span class="plus"><i class="fa fa-plus"></i></span></a>
                                 <ul>
-                                      <li> <a target="myframe" href="<?php echo base_url() . "index.php/station/"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Stations</b> </a> </li>
-                                  
-                                     <li> <a target="myframe" href="<?php echo base_url() . "index.php/user/"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Users</b> </a> </li>
+                                    <li> <a target="myframe" href="<?php echo base_url() . "index.php/station/"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Stations</b> </a> </li>
+
+                                    <li> <a target="myframe" href="<?php echo base_url() . "index.php/user/"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Users</b> </a> </li>
                                     <li> <a target="myframe" href="<?php echo base_url() . "index.php/role/"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Roles</b> </a> </li>
                                     <li> <a target="myframe" href="<?php echo base_url() . "index.php/logs/"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Logs</b> </a> </li>
                                     <li> <a target="myframe" href="<?php echo base_url() . "index.php/element/"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Elements</b> </a> </li>
                                     <li> <a target="myframe" href="<?php echo base_url() . "index.php/instrument/"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Instruments</b> </a> </li>
                                     <li> <a target="myframe" href="<?php echo base_url() . "index.php/archive/"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Archive</b> </a> </li>
-                                 
+
                                 </ul>
                             </li>
                         </ul>

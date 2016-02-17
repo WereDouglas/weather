@@ -14,7 +14,7 @@
         <div class="col-md-12">   
             <div class="header">
                 <div class="actions"> <a class="minimize" href="#"><i class="fa fa-chevron-down"></i></a><a class="close-down" href="#"><i class="fa fa-times"></i></a> </div>
-                <h3 class="content-header">Metar Book (Observed every hour)Aviation Routine Weather Report</h3>
+                <h3 class="content-header">Metar Book (hourly)Aviation Routine Weather Report</h3>
                 <?php echo $this->session->flashdata('msg'); ?>
             </div>
             <form id="edit-form" name="edit-form" enctype="multipart/form-data"  action='<?= base_url(); ?>index.php/metar/save'  method="post">            
@@ -100,7 +100,7 @@
                     <input  class="form-control span12 " type="text" id="dew" name="dew"  />
                     <label><a href="#">Wet bulb</a> </label>
                     <input type="text" id="wet" name="wet" class="span12"  />
-                    <label> <a class="span12" href="#">TT/T<span class="foot-note">d</span>T<span class="foot-note">d</span></a></label>
+                    <label> <a class="span12" href="#">TT/T<span class="foot-note">d</span>T<span class="foot-note">d:</span></a></label>
                     <input class="span6"  type="text"  name="temp1" id="temp1"  />/<input  class="span6" type="text" name="dew1" id="dew1" />
                     <br><label><a href="#">QNH(hpa)</a></label>
                     <input class="span12 input-mask-hpa" type="text" id="stationhpa" name="stationhpa" />
@@ -112,8 +112,9 @@
                     <input class="span12" style="border: none;" type="text" id="seainch" name="seainch" />
                     <label>  <a href="#">RE W1W1</a>  </label>                     
                     <input type="text"  class="span12 input-mask-re" name="recent" id="recent"/> 
-                    <button  class=" btn-success">Submit</button> 
+                  
                 </div>
+                  <button  class=" btn">Submit</button> 
             </form> 
 
 

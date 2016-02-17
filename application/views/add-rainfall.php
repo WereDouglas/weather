@@ -1,20 +1,19 @@
-
+<link href="<?= base_url(); ?>css/mine.css" rel="stylesheet" />
 <link rel="stylesheet" href="<?= base_url(); ?>assets/css/ace.min.css" />     
 <link rel="stylesheet" href="<?= base_url(); ?>assets/css/ace-skins.min.css" />       
-
+<link href="<?= base_url(); ?>css/admin.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="<?= base_url(); ?>assets/css/chosen.css" />
 <link rel="stylesheet" href="<?= base_url(); ?>assets/css/datepicker.css" />
 <link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap-timepicker.css" />
 <link rel="stylesheet" href="<?= base_url(); ?>assets/css/daterangepicker.css" />
 <link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap.min.css" />
-<link href="<?= base_url(); ?>css/mine.css" rel="stylesheet" />
+
 <?php require_once(APPPATH . 'views/permission.php'); ?> 
 
-<div class=" container-fluid">
+<div class="container clear_both padding_fix">
     <h4> Daily periodical rainfall</h4>
     <div class="row">
         <div class="span12">
-
             <form  enctype="multipart/form-data"  action='<?= base_url(); ?>index.php/metar/rainfall'  method="post">            
                 <label for="form-field-select-1">Station name</label>
                 <select  id="station"  name="station">
@@ -22,7 +21,7 @@
                     <option value="<?= $this->session->userdata('stationname'); ?>" ><?= $this->session->userdata('stationname'); ?></option>
 
                     <?php
-                    if (allowed($see, 'manage')) {
+                   
                         if (is_array($stations) && count($stations)) {
                             foreach ($stations as $loop) {
                                 ?> 
@@ -30,7 +29,7 @@
                             <?php
                             }
                         }
-                    }
+                    
                     ?>
 
                 </select>
@@ -52,14 +51,14 @@
                 <div class="form-group input-append bootstrap-timepicker">
                     <label for="timepicker1">Time</label>
                     <input id="timepicker1" type="text" class="form-control"  /> 
-
                 </div> 
                 <div class="form-group">
                     <label> Date  </label>
                     <input class="form-control span3 date-picker" id="daterain" value="<?php echo date('Y-m-d'); ?>"  name="daterain" type="text"  />
                     <input type="hidden" class=" date-picker" id="datenow" value="<?php echo date('Y-m-d'); ?>"  name="datenow" type="text"  />
-                    <button onclick="" name="rainy" id="rainy" class=" btn btn-small"> Submit  </button>
+                 
                 </div>
+                   <button onclick="" name="rainy" id="rainy" class="btn"> Submit  </button>
             </form> 
         </div>
     </div>                       

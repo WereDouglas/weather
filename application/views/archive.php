@@ -85,130 +85,10 @@
                             <i class="icon-file icon-2x green"></i>
                             Files & Archive
                         </h4>
-                        <?php echo $this->session->flashdata('msg'); ?>
-
-                        <div class="widget-toolbar no-border">
-                            <ul class="nav nav-tabs" id="recent-tab">
-                                <li class="active">
-                                    <a data-toggle="tab" href="#task-tab">New File</a>
-                                </li>
-
-                                <li>
-                                    <a data-toggle="tab" href="#member-tab">View All</a>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
-
-                    <div class="widget-body">
-                        <div class="widget-main padding-4">
-                            <div class="tab-content padding-8 overflow-visible">
-                                <div id="task-tab" class="tab-pane active">
-
-                                    <div id="signup-box" class="signup-box widget-box no-border">
-                                        <div class="widget-body">
-                                            <div class="widget-main">
-
-                                                <div class="span4">
-                                                    <form id="station-form" name="station-form" enctype="multipart/form-data"  action='<?= base_url(); ?>index.php/archive/save'  method="post">            
-
-                                                        <div class="well well-large"> 
-                                                            <span >Report/form type:<br><select id="form" name="form">
-                                                                    <option value="Metar book" />Metar book
-                                                                    <option value="Synoptic register" />Synoptic register
-                                                                    <option value="Dekadal" />Dekadal
-                                                                    <option value="Rainfall card" />Rainfall card
-                                                                    <option value="Weather summary" />Weather summary
-                                                                    <option value="Climatological observation" />Climatological observation
-                                                                </select></span><br>
-                                                            <label for="form-field-select-1">Name</label>
-                                                            <input type="text" class="span12" placeholder="Name" id="name" name="name" />
-                                                            <label for="form-field-select-1">Station</label>
-                                                            <select id="station" name="station">                                                       
-                                                                <?php
-                                                                if (is_array($stations) && count($stations)) {
-                                                                    foreach ($stations as $loop) {
-                                                                        ?>                        
-                                                                        <option value="<?= $loop->name ?>" /><?= $loop->name ?>
-
-
-                                                                        <?php
-                                                                    }
-                                                                }
-                                                                ?>
-                                                            </select>
-                                                            <div class="widget-body">
-                                                                <div class="widget-main">
-<!--													<input type="file" id="id-input-file-2" />-->
-                                                                    <input type="file" id="id-input-file-3" name="userfile" />
-                                                                    <label>
-                                                                        <input type="checkbox" name="file-format" id="id-file-format" />
-                                                                        <span class="lbl"> Allow only images</span>
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row-fluid">
-                                                                <label for="id-date-range-picker-1">(Period)Start Date - End Date</label>
-                                                            </div>
-
-                                                            <div class="control-group">
-                                                                <div class="row-fluid input-prepend">
-                                                                    <span class="add-on">
-                                                                        <i class="icon-calendar"></i>
-                                                                    </span>
-
-                                                                    <input class="span10" type="text" name="date-range-picker" id="id-date-range-picker-1" />
-                                                                </div>
-                                                            </div>
-
-                                                            <label for="form-field-select-1">Description</label>
-                                                            <input type="text" class="span12" id="description" name="description" placeholder="Details" />                                                    
-
-                                                            <div class="form-group">
-
-                                                                <div class="clearfix">
-                                                                    <br>                               <button type="reset" class="width-10 pull-left btn btn-small">
-                                                                        <i class="icon-refresh"></i>
-                                                                        Clear
-                                                                    </button>
-
-                                                                    <button type="submit" class="width-15 pull-right btn btn-small btn-success">
-                                                                        Submit
-
-                                                                    </button>
-                                                                </div>
-                                                            </div>                   
-
-                                                        </div>
-                                                    </form>
-
-                                                    <fieldset>
-                                                    </fieldset>
-
-                                                </div>
-                                                <div class="widget-box span4">
-                                                    <div class="widget-header header-color-green2">
-                                                        <h4 class="lighter smaller">Browse Files</h4>
-                                                    </div>
-
-                                                    <div class="widget-body">
-                                                        <div class="widget-main padding-8">
-                                                            <div id="tree2" class="tree"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div id="divOverlay"></div>
-                                                <script type="text/javascript">
-                                                    var $assets = "assets"; //this will be used in fuelux.tree-sampledata.js
-                                                </script>
-
-                                            </div><!--/widget-body-->
-                                        </div><!--/signup-box-->
-                                    </div>
-                                </div>
-
-                                <div id="member-tab" class="tab-pane">
-                                    <div class="clearfix">
+                        <?php echo $this->session->flashdata('msg'); ?>
+                     
+     <div class="scroll">
                                         <table id="sample-table-2" class="table table-striped table-bordered table-hover">
                                             <thead>
                                                 <tr>
@@ -280,13 +160,9 @@
                                         </table>     
 
                                     </div>
-                                    <div id="divLargerImage"></div>
-                                    <div class="hr hr-double hr8"></div>
-                                </div><!--member-tab-->
+                    </div>
 
-                            </div>
-                        </div><!--/widget-main-->
-                    </div><!--/widget-body-->
+                    
                 </div><!--/widget-box-->
             </div><!--/span-->
 

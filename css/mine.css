@@ -19,6 +19,14 @@ body {
     padding: 9px 5px;
    
 }
+input, textarea, .uneditable-input {
+    width: 100%;
+}
+select {
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
 .ace-nav > li {
   
     background: none repeat scroll 0% 0%;

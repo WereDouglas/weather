@@ -123,8 +123,8 @@
                 <span class="lbl">Earth Quake(EQ)</span>
  </div>
 
-                <button class="btn btn-primary" type="submit">Submit</button>
-                <button class="btn btn-default">Cancel</button>
+                <button class="btn" type="submit">Submit</button>
+                <button class="btn">Cancel</button>
             </form>          
 
         </div> 
