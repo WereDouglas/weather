@@ -91,7 +91,7 @@ class Dekadal extends CI_Controller {
                         $resv->wet9 = $res->wet_bulb;
                         $resv->dew9 = $res->dew_temperature;
                         $resv->humid9 = $res->humidity;
-                        $resv->wind9 = number_format($res->wind_direction,0);
+                        $resv->wind9 = number_format($res->wind_direction, 0);
                         $resv->speed9 = $res->wind_speed;
                         $resv->visibility9 = $res->visibility;
                         $resv->hpa9 = $res->station_pressure_hpa;
@@ -102,7 +102,7 @@ class Dekadal extends CI_Controller {
                         $resv->wet15 = $res->wet_bulb;
                         $resv->dew15 = $res->dew_temperature;
                         $resv->humid15 = $res->humidity;
-                        $resv->wind15 = number_format($res->wind_direction,0);
+                        $resv->wind15 = number_format($res->wind_direction, 0);
                         $resv->speed15 = $res->wind_speed;
                         $resv->visibility15 = $res->visibility;
                         $resv->hpa15 = $res->station_pressure_hpa;
@@ -387,7 +387,7 @@ class Dekadal extends CI_Controller {
                             <td class="small" >' . $loop->humid9 . '</td>
                             <td class="small">' . $loop->wind9 . '<sup>o</sup></td>
                             <td class="small">' . $direction . '</td>
-                            <td class="small">' . $loop->speed9 .'</td>
+                            <td class="small">' . $loop->speed9 . '</td>
                             <td class="small">' . $speed . '</td>
                             <td class="small">' . $loop->rain . '</td>
                                 

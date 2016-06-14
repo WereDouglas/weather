@@ -43,7 +43,14 @@ class Archive extends CI_Controller {
         
        
         $this->load->view('archive', $data);
-    }
+      }
+      public function image() {  
+          
+          $data['file'] = $this->uri->segment(3);
+          
+           $this->load->view('view-image', $data);
+          
+      }
     
     
      public function add_archive() {

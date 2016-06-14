@@ -86,90 +86,93 @@
                             Files & Archive
                         </h4>
                     </div>
-                        <?php echo $this->session->flashdata('msg'); ?>
-                     
-     <div class="scroll">
-                                        <table id="sample-table-2" class="table table-striped table-bordered table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th class="center">
-                                                        <label>
-                                                            <input type="checkbox" />
-                                                            <span class="lbl"></span>
-                                                        </label>
-                                                    </th>
-                                                    <th>Form</th>
-                                                    <th>Name</th>
-                                                    <th>Station</th>
-                                                    <th class="hidden-480">Period</th>
+                    <?php echo $this->session->flashdata('msg'); ?>
 
-                                                    <th class="hidden-phone">Description </th>
-                                                    <th class="hidden-480">Submitted On:</th>
+                    <div class="scroll">
+                        <table id="sample-table-2" class="table table-striped table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="center">
+                                        <label>
+                                            <input type="checkbox" />
+                                            <span class="lbl"></span>
+                                        </label>
+                                    </th>
+                                    <th>FORM</th>
+                                    <th>NAME</th>
+                                    <th>STATION</th>
+                                    <th class="hidden-480">PERIOD</th>
 
-                                                    <th>File</th
+                                    <th class="hidden-phone">DETAILS </th>
+                                    <th class="hidden-480">CREATED</th>
 
-                                                    <th></th>
-                                                </tr>
-                                            </thead>
+                                    <th>FILE</th>
+                                    <th>PRINT</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
 
-                                            <tbody>
-                                                <?php
-                                                if (is_array($files) && count($files)) {
-                                                    foreach ($files as $loop) {
-                                                        ?>  
+                            <tbody>
+                                <?php
+                                if (is_array($files) && count($files)) {
+                                    foreach ($files as $loop) {
+                                        ?>  
 
-                                                        <tr>
-                                                            <td class="center">
-                                                                <label>
-                                                                    <input type="checkbox" />
-                                                                    <span class="lbl"></span>
-                                                                </label>
-                                                            </td>
-                                                            <td>
-                                                                <a href="#"><?= $loop->form ?></a>
-                                                            </td>
-                                                            <td>
-                                                                <a href="<?php echo base_url() . "archive/" . $loop->file; ?>"><?= $loop->name ?></a>
-                                                            </td>
+                                        <tr>
+                                            <td class="center">
+                                                <label>
+                                                    <input type="checkbox" />
+                                                    <span class="lbl"></span>
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <a href="#"><?= $loop->form ?></a>
+                                            </td>
+                                            <td>
+                                                <a href="<?php echo base_url() . "archive/" . $loop->file; ?>"><?= $loop->name ?></a>
+                                            </td>
 
-                                                            <td class="hidden-480"><?= $loop->station ?></td>
-                                                            <td class="hidden-phone"><?= $loop->period ?></td>
+                                            <td class="hidden-480"><?= $loop->station ?></td>
+                                            <td class="hidden-phone"><?= $loop->period ?></td>
 
-                                                            <td class="hidden-480">
-                                                                <span class="label label-success"><?= $loop->description ?></span>
-                                                            </td>
-                                                            <td><?= $loop->submitted ?></td>
-                                                            <td><a href="<?php echo base_url() . "archive/" . $loop->file; ?>"><?= $loop->file ?></a></td>
+                                            <td class="hidden-480">
+                                                <span class="label label-success"><?= $loop->description ?></span>
+                                            </td>
+                                            <td><?= $loop->submitted ?></td>
+                                            <td><a href="<?php echo base_url() . "archive/" . $loop->file; ?>"><?= $loop->file ?></a></td>
 
+                                            <td class="td-actions">
+                                                <a href="<?php echo base_url() . "index.php/archive/image/" . $loop->file; ?>" ><i class="icon-print bigger-120"></i></a> <span class="red">
+                                                      </span>
+                                            </td>
 
+                                            <td class="td-actions">
 
-                                                            <td class="td-actions">
+                                                <a href="<?php echo base_url() . "index.php/archive/delete/" . $loop->id; ?>" class="tooltip-error" data-rel="tooltip" title="Delete">
+                                                    <span class="red">
+                                                        <i class="icon-trash bigger-120"></i>
+                                                    </span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <?php
+                                    }
+                                }
+                                ?>
+                            </tbody>
+                        </table>     
 
-                                                                <a href="<?php echo base_url() . "index.php/archive/delete/" . $loop->id; ?>" class="tooltip-error" data-rel="tooltip" title="Delete">
-                                                                    <span class="red">
-                                                                        <i class="icon-trash bigger-120"></i>
-                                                                    </span>
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-                                                        <?php
-                                                    }
-                                                }
-                                                ?>
-                                            </tbody>
-                                        </table>     
-
-                                    </div>
                     </div>
+                </div>
 
-                    
-                </div><!--/widget-box-->
-            </div><!--/span-->
 
-        </div><!--/row-->
+            </div><!--/widget-box-->
+        </div><!--/span-->
 
-        <!--PAGE CONTENT ENDS-->
-    </div><!--/.span-->
+    </div><!--/row-->
+
+    <!--PAGE CONTENT ENDS-->
+</div><!--/.span-->
 </div><!--/.row-fluid-->
 <!-- let's call the following div as the POPUP FRAME -->
 
@@ -193,8 +196,7 @@
             $data = this._data; //the root tree
             callback({data: $data});
             return;
-        }
-        else if ("type" in options && options.type == "folder") {
+        } else if ("type" in options && options.type == "folder") {
             if ("additionalParameters" in options && "children" in options.additionalParameters)
                 $data = options.additionalParameters.children;
             else
@@ -237,8 +239,10 @@ if (is_array($files) && count($files)) {
     foreach ($files as $loop) {
         ?>
                     {name: '<i class="icon-file-text red"></i><a href="#"><img height="30px" width="30px" src="<?= base_url(); ?>/archive/<?= $loop->file; ?>"/></a><a href="#"><?php echo $loop->station . ' ' . $loop->period; ?></a>', type: 'item'},
-    <?php }
-} ?>
+    <?php
+    }
+}
+?>
 
 
         ]
