@@ -9,9 +9,9 @@
 <link rel="stylesheet" href="<?= base_url(); ?>assets/css/ace-responsive.min.css" />
 <link rel="stylesheet" href="<?= base_url(); ?>assets/css/ace-skins.min.css" />
 <link href="<?= base_url(); ?>css/mine.css" rel="stylesheet" />
-<div class="container clear_both padding_fix">
+<div class="container">
     <div class="row">
-        <div class=" scroll">   
+        <div class="col-md-12 scroll">   
             <div class="header">
                 <div class="actions"> <a class="minimize" href="#"><i class="fa fa-chevron-down"></i></a><a class="close-down" href="#"><i class="fa fa-times"></i></a> </div>
                 <h3 class="content-header">Daily weather records:<?= $this->session->userdata('stationname'); ?></h3>
@@ -75,7 +75,7 @@
                     <a href="#">Evap2.type</a>
                 </th>
 
-                </thead>>   
+            </thead>  
                 <?php
                 if (is_array($daily) && count($daily)) {
                     foreach ($daily as $loop) {

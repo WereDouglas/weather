@@ -15,6 +15,28 @@ class Metar extends CI_Controller {
         $this->load->library('helper');
     }
 
+    public function grid() {
+
+        $this->load->view('metar-grid');
+    }
+
+    public function daily_weather() {
+        $this->load->view('daily-grid');
+    }
+
+    public function periodic() {
+        $this->load->view('rain-grid');
+    }
+
+    public function synoptic() {
+        $this->load->view('synoptic-grid');
+    }
+
+    public function grids() {
+
+        $this->load->view('metar-grids');
+    }
+
     public function index() {
 
         $query = $this->Md->show('metar');
@@ -46,9 +68,8 @@ class Metar extends CI_Controller {
 
         $this->load->view('metar', $data);
     }
-    
-    
-     public function view_metar() {
+
+    public function view_metar() {
 
         $query = $this->Md->show('metar');
         //  var_dump($query);
@@ -79,9 +100,8 @@ class Metar extends CI_Controller {
 
         $this->load->view('view-metar', $data);
     }
-    
-    
-      public function add_metar() {
+
+    public function add_metar() {
 
         $query = $this->Md->show('metar');
         //  var_dump($query);
@@ -112,9 +132,10 @@ class Metar extends CI_Controller {
 
         $this->load->view('add-metar', $data);
     }
-     public function report() {
 
-             
+    public function report() {
+
+
         $query = $this->Md->show('station');
         if ($query) {
             $data['stations'] = $query;
@@ -170,9 +191,8 @@ class Metar extends CI_Controller {
 
         $this->load->view('add-daily-weather', $data);
     }
-    
-    
-     public function rainfall_records() {
+
+    public function rainfall_records() {
 
         $query = $this->Md->show('metar');
         //  var_dump($query);
@@ -248,8 +268,8 @@ class Metar extends CI_Controller {
 
         $this->load->view('add-rainfall', $data);
     }
-    
-      public function view_rainfall() {
+
+    public function view_rainfall() {
 
         $query = $this->Md->show('metar');
         //  var_dump($query);
@@ -303,7 +323,7 @@ class Metar extends CI_Controller {
 
         $this->load->helper(array('form', 'url'));
         $type = $this->input->post('type');
-        $station = $this->input->post('code');
+        $station = $this->session->userdata('code');
         $datetime = $this->input->post('datetime');
         $wind = $this->input->post('wind');
         $visibility = $this->input->post('visibility');
@@ -325,23 +345,20 @@ class Metar extends CI_Controller {
 
         $get_result = $this->Md->check($datetime, 'datetime', 'metar');
         if (!$get_result) {
-             $this->session->set_flashdata('msg', '<div class="alert alert-success">                                                   
+            $this->session->set_flashdata('msg', '<div class="alert alert-success">                                                   
                                                 <strong>  meta has already been submitted</strong>									
 						</div>');
             redirect('/metar', 'refresh');
-                return;
+            return;
 
-               // $metar = array('station' => $station, 'type' => $type, 'datetime' => $datetime, 'timezone' => 'GMT', 'wind_direction' => $wind_direction, 'wind_speed' => $wind_speed, 'unit' => $wind_unit, 'visibility' => $visibility, 'present_weather' => $present, 'cloud' => $cloud, 'air_temperature' => $air_temperature, 'humidity' => $humidity, 'dew_temperature' => $dew_temperature, 'wet_bulb' => $wet_bulb, 'station_pressure_hpa' => $station_pressure, 'sea_pressure_hpa' => $sea_pressure, 'recent_weather' => $recent_weather, 'submitted' => date('Y-m-d H:m:s'), 'user' => $this->session->userdata('username'), 'day' => $day);
-                //$this->Md->save($metar, 'metar');
-                //$log = array('user' => $this->session->userdata('username'), 'userid' => $this->session->userdata('id'), 'action' => 'save', 'details' => 'meta information saved ', 'date' => date('Y-m-d H:i:s'), 'ip' => $this->input->ip_address(), 'url' => '');
-                //$this->Md->save($log, 'logs');
-              
-           
-            
+            // $metar = array('station' => $station, 'type' => $type, 'datetime' => $datetime, 'timezone' => 'GMT', 'wind_direction' => $wind_direction, 'wind_speed' => $wind_speed, 'unit' => $wind_unit, 'visibility' => $visibility, 'present_weather' => $present, 'cloud' => $cloud, 'air_temperature' => $air_temperature, 'humidity' => $humidity, 'dew_temperature' => $dew_temperature, 'wet_bulb' => $wet_bulb, 'station_pressure_hpa' => $station_pressure, 'sea_pressure_hpa' => $sea_pressure, 'recent_weather' => $recent_weather, 'submitted' => date('Y-m-d H:m:s'), 'user' => $this->session->userdata('username'), 'day' => $day);
+            //$this->Md->save($metar, 'metar');
+            //$log = array('user' => $this->session->userdata('username'), 'userid' => $this->session->userdata('id'), 'action' => 'save', 'details' => 'meta information saved ', 'date' => date('Y-m-d H:i:s'), 'ip' => $this->input->ip_address(), 'url' => '');
+            //$this->Md->save($log, 'logs');
         }
 
         if ($station != "") {
-            $metar = array('station' => $station, 'type' => $type, 'datetime' => $datetime, 'timezone' => 'GMT', 'wind_direction' => $wind_direction, 'wind_speed' => $wind_speed, 'unit' => $wind_unit, 'visibility' => $visibility, 'present_weather' => $present, 'cloud' => $cloud, 'air_temperature' => $air_temperature, 'humidity' => $humidity, 'dew_temperature' => $dew_temperature, 'wet_bulb' => $wet_bulb, 'station_pressure_hpa' => $station_pressure, 'sea_pressure_hpa' => $sea_pressure, 'recent_weather' => $recent_weather, 'submitted' => date('Y-m-d H:m:s'), 'user' => $this->session->userdata('username'), 'day' => $day);
+            $metar = array('name' => $this->session->userdata('station'), 'station' => $station, 'type' => $type, 'datetime' => $datetime, 'timezone' => 'GMT', 'wind_direction' => $wind_direction, 'wind_speed' => $wind_speed, 'unit' => $wind_unit, 'visibility' => $visibility, 'present_weather' => $present, 'cloud' => $cloud, 'air_temperature' => $air_temperature, 'humidity' => $humidity, 'dew_temperature' => $dew_temperature, 'wet_bulb' => $wet_bulb, 'station_pressure_hpa' => $station_pressure, 'sea_pressure_hpa' => $sea_pressure, 'recent_weather' => $recent_weather, 'submitted' => date('Y-m-d H:m:s'), 'user' => $this->session->userdata('username'), 'day' => $day);
             $this->Md->save($metar, 'metar');
 
             redirect('/metar', 'refresh');
@@ -355,19 +372,17 @@ class Metar extends CI_Controller {
         }
     }
 
-  
-    
-      public function saveOnline() {       
+    public function saveOnline() {
 
         $this->load->helper(array('form', 'url'));
-        
-         $stations = $this->Md->get('name', $this->input->post('station'), 'station');
-         foreach ($stations as $loop) {                    
-                         $code = $loop->code;
-         }        
-        
-        $type = $this->input->post('type');      
-        $station = $code ;
+
+        $stations = $this->Md->get('name', $this->input->post('station'), 'station');
+        foreach ($stations as $loop) {
+            $code = $loop->code;
+        }
+
+        $type = $this->input->post('type');
+        $station = $code;
         $datetime = $this->input->post('datetime');
         $wind = $this->input->post('wind');
         $visibility = $this->input->post('visibility');
@@ -381,7 +396,7 @@ class Metar extends CI_Controller {
         $dew_temperature = $this->input->post('dew');
         $wet_bulb = $this->input->post('wet');
         $day = $this->input->post('datenow');
-         $user = $this->input->post('user');
+        $user = $this->input->post('user');
 
         $wind_info = explode(' ', $wind);
         $wind_direction = $wind_info[0];
@@ -391,24 +406,19 @@ class Metar extends CI_Controller {
         $get_result = $this->Md->check($datetime, 'datetime', 'metar');
         if (!$get_result) {
             if ($type != '') {
-               echo' meta has already been submitted';
-                
+                echo' meta has already been submitted';
             }
         }
 
         if ($station != "") {
             $metar = array('station' => $station, 'type' => $type, 'datetime' => $datetime, 'timezone' => 'GMT', 'wind_direction' => $wind_direction, 'wind_speed' => $wind_speed, 'unit' => $wind_unit, 'visibility' => $visibility, 'present_weather' => $present, 'cloud' => $cloud, 'air_temperature' => $air_temperature, 'humidity' => $humidity, 'dew_temperature' => $dew_temperature, 'wet_bulb' => $wet_bulb, 'station_pressure_hpa' => $station_pressure, 'sea_pressure_hpa' => $sea_pressure, 'recent_weather' => $recent_weather, 'submitted' => date('Y-m-d H:m:s'), 'user' => $user, 'day' => $day);
             $this->Md->save($metar, 'metar');
-                     echo'saved';
+            echo'saved';
         } else {
-             echo 'no station defined ';
+            echo 'no station defined ';
         }
     }
 
-  
-    
-    
-    
     public function edit() {
         $this->load->helper(array('form', 'url'));
         $id = $this->uri->segment(3);
@@ -574,7 +584,7 @@ class Metar extends CI_Controller {
         if ($year)
             $sql[] = " YEAR(day) = '$year' ";
         if ($station)
-            $sql[] = "station = '$station' ";       
+            $sql[] = "station = '$station' ";
 
         $query = "SELECT * FROM metar";
 
@@ -587,7 +597,7 @@ class Metar extends CI_Controller {
         // var_dump($get_result);
         if ($get_result) {
 
-            echo '   <h4>' . $day.'/'.$month.'/'.$year. ' METAR DATA</h4>             
+            echo '   <h4>' . $day . '/' . $month . '/' . $year . ' METAR DATA</h4>             
                                          
    <table id="metar" class="table table-striped table-bordered table-hover">
 
@@ -667,26 +677,35 @@ class Metar extends CI_Controller {
                         </tr>';
             if (is_array($get_result) && count($get_result)) {
                 foreach ($get_result as $loop) {
-                    $direction = 'none' ;
-                         $speed = round(($loop->wind_speed*0.514444),2);                     
-                    if(in_array($loop->wind_direction, range(0, 90)))$direction ='NE';
-                     if(in_array($loop->wind_direction, range(90, 180)))$direction ='SE';
-                    if(in_array($loop->wind_direction, range(180, 270)))$direction ='SW';
-                     if(in_array($loop->wind_direction, range(270, 360)))$direction ='NW';
-                     
-                       if($loop->wind_direction==0) $direction = 'N';
-                      if($loop->wind_direction==45) $direction = 'NE';
-                        if($loop->wind_direction==90) $direction = 'E';
-                          if($loop->wind_direction==180) $direction = 'S';
-                            if($loop->wind_direction==270) $direction = 'W';  
+                    $direction = 'none';
+                    $speed = round(($loop->wind_speed * 0.514444), 2);
+                    if (in_array($loop->wind_direction, range(0, 90)))
+                        $direction = 'NE';
+                    if (in_array($loop->wind_direction, range(90, 180)))
+                        $direction = 'SE';
+                    if (in_array($loop->wind_direction, range(180, 270)))
+                        $direction = 'SW';
+                    if (in_array($loop->wind_direction, range(270, 360)))
+                        $direction = 'NW';
+
+                    if ($loop->wind_direction == 0)
+                        $direction = 'N';
+                    if ($loop->wind_direction == 45)
+                        $direction = 'NE';
+                    if ($loop->wind_direction == 90)
+                        $direction = 'E';
+                    if ($loop->wind_direction == 180)
+                        $direction = 'S';
+                    if ($loop->wind_direction == 270)
+                        $direction = 'W';
 
                     echo '<tr>
                             <td class="small" >' . $loop->type . '</td>
                             <td class="small" >' . $loop->station . ' </td>
                             <td class="small">' . $loop->datetime . '</td>
                             <td class="small">' . $loop->wind_direction . ' ' . $loop->wind_speed . ' ' . $loop->unit . '</td>
-                               <td class="small">' .$speed. '</td>  
-                     <td class="small">' .$direction. '</td>
+                               <td class="small">' . $speed . '</td>  
+                     <td class="small">' . $direction . '</td>
                      <td class="small" >' . $loop->visibility . '</td>
                      <td class="small" >' . $loop->present_weather . '</td>
                      <td class="small">' . $loop->cloud . '</td>
@@ -781,10 +800,10 @@ class Metar extends CI_Controller {
             echo '<br><div class="alert alert-info span12"><strong>Information  submitted</strong></div>';
         }
     }
-    
-     public function dailyOnline() {
 
-       
+    public function dailyOnline() {
+
+
         $this->load->helper(array('form', 'url'));
         //{date:date,max:max,min:min,actual:actual,anemometer:anemometer,wind:wind,maxi:maxi,station:station}
 
@@ -832,7 +851,7 @@ class Metar extends CI_Controller {
             $this->Md->save($daily, 'daily');
             $log = array('user' => $user, 'userid' => "", 'action' => 'saved daily weather information', 'details' => $stationname . 'submit of weather information ', 'date' => date('Y-m-d H:i:s'), 'ip' => "", 'url' => '');
             $this->Md->save($log, 'logs');
-             }
+        }
     }
 
     public function rain() {
