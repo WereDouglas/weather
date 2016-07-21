@@ -47,6 +47,8 @@ class Dekadal extends CI_Controller {
         $station = trim($this->input->post('station'));
         $monthed = trim($this->input->post('month'));
         $yeared = trim($this->input->post('year'));
+       $startdate = trim($this->input->post('startdate'));
+       $enddate = trim($this->input->post('enddate'));
 
         if ($station != " " && $monthed != " " && $yeared != " ") {
             unset($sql);
@@ -56,6 +58,14 @@ class Dekadal extends CI_Controller {
             }
             if ($yeared) {
                 $sql[] = " YEAR(date) = '$yeared' ";
+            }
+
+            if ($startdate) {
+                $sql[] = "DAY(date) > '$startdate' AND  DAY(date) < '$enddate' ";
+            } 
+            
+            if ($enddate) {
+                $sql[] = "DAY(date) > '$startdate' AND  DAY(date) < '$enddate' ";
             }
 
             $sql[] = "station = '$station'";

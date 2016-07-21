@@ -36,6 +36,21 @@ class Station extends CI_Controller {
 
         $this->load->view('add-station', $data);
     }
+     public function api() {
+
+        $station = urldecode($this->uri->segment(3));
+        $number = urldecode($this->uri->segment(4));
+       
+
+        if ($station != "") {
+            $result = $this->Md->query("SELECT * FROM station WHERE name='" . $station . "' AND number = '$number'");
+
+            if ($result) {
+                echo json_encode($result);
+                return;
+            }
+        }
+    }
 
     public function view() {
         $query = $this->Md->show('station');

@@ -38,6 +38,39 @@ class User extends CI_Controller {
         $this->load->view('user', $data);
     }
 
+    public function api() {
+
+        $station = urldecode($this->uri->segment(3));
+
+        if ($station != "") {
+            $result = $this->Md->query("SELECT * FROM user WHERE station='" . $station . "'");
+            // $result = $this->Md->show('user');
+// var_dump($result);
+ echo json_encode($result);
+return;
+            $all = array();
+
+            foreach ($result as $res) {
+                $resv = new stdClass();
+                $resv->station = $res->station;
+                $resv->name = $res->name;
+                $resv->email = $res->email;
+                $resv->contact = $res->contact;
+                $resv->role = $res->role;
+                $resv->password = $this->encrypt->decode($res->password, $res->email);
+
+
+                array_push($all, $resv);
+            }
+           // echo json_encode($all);
+              $variations =  json_encode($all);
+echo $variations;
+
+
+            return;
+        }
+    }
+
     public function add() {
 
         $query = $this->Md->show('user');
@@ -116,9 +149,9 @@ class User extends CI_Controller {
             redirect('/user', 'refresh');
         }
         if ($email != "") {
-            $user = array('email' => $email, 'name' => $name, 'station' => $station, 'contact' => $contact, 'contact2' => $contact2, 'password' => $password, 'role' => $role, 'active' => 'false', 'create' => date('Y-m-d'));
+            $user = array('email' => $email, 'name' => $name, 'station' => $station, 'contact' => $contact, 'contact2' => $contact2, 'password' => md5($this->input->post('password')), 'role' => $role, 'active' => 'false', 'create' => date('Y-m-d'));
             $this->Md->save($user, 'user');
-            $log = array('user' => $this->session->userdata('username'), 'userid' => $this->session->userdata('id'), 'action' => 'save', 'details' => $name . ' user information save ', 'date' => date('Y-m-d H:i:s'), 'ip' => $this->input->ip_address(), 'url' => '');
+            $log = array('user' => $this->session->userdata('username'), 'userid' => $this->session->userdata('id'), 'action' => 'save', 'details' => $name . ' new user information saved '.$name, 'date' => date('Y-m-d H:i:s'), 'ip' => $this->input->ip_address(), 'url' => '');
             $this->Md->save($log, 'logs');
             if ($page == "") {
                 redirect('/user', 'refresh');
@@ -191,7 +224,7 @@ class User extends CI_Controller {
             return;
         }
         $key = $email;
-        $password_new = $this->encrypt->encode($password, $key);
+        $password_new = md5($password) ;//$this->encrypt->encode($password, $key);
         $newer = $password;
 
         $user = array('password' => $password_new);
@@ -206,6 +239,32 @@ class User extends CI_Controller {
 //        $this->Md->save($mail, 'emails');
     }
 
+    public function remote() {
+
+        $this->load->helper(array('form', 'url'));
+        $email = $this->input->post('email');
+        $password_now = md5($this->input->post('password'));
+        $key = $email;
+        $get_result = $this->Md->check($email, 'email', 'user');
+        if (!$get_result) {
+
+            $result = $this->Md->get('email', $email, 'user');
+            // var_dump($result);
+            foreach ($result as $res) {
+                $key = $email;
+               // $password = md5($res->password);
+               
+                if ($password_now == $res->password && $res->role=="Administrator") {
+                    echo 'T';
+                } else {
+                    echo 'F';
+                }
+            }
+        } else {
+            echo 'F';
+        }
+    }
+
     public function update() {
 
         $this->load->helper(array('form', 'url'));
@@ -215,7 +274,7 @@ class User extends CI_Controller {
         $contact = $this->input->post('contact');
         $contact2 = $this->input->post('contact2');
         $password = $this->input->post('password');
-        $role = $this->input->post('role');      
+        $role = $this->input->post('role');
         $station = $this->input->post('station');
 
         if ($password != "") {

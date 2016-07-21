@@ -1,168 +1,205 @@
- <div class=" container-fluid">
-      <div class="page-content">
-           <div class="row-fluid">
+<div class=" container-fluid">
+    <div class="page-content">
+        <div class="row-fluid">
 
-<link rel="stylesheet" href="<?= base_url(); ?>assets/css/ace.min.css" />     
-<link rel="stylesheet" href="<?= base_url(); ?>assets/css/ace-skins.min.css" />       
+            <link rel="stylesheet" href="<?= base_url(); ?>assets/css/ace.min.css" />     
+            <link rel="stylesheet" href="<?= base_url(); ?>assets/css/ace-skins.min.css" />       
 
-<link rel="stylesheet" href="<?= base_url(); ?>assets/css/chosen.css" />
-<link rel="stylesheet" href="<?= base_url(); ?>assets/css/datepicker.css" />
-<link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap-timepicker.css" />
-<link rel="stylesheet" href="<?= base_url(); ?>assets/css/daterangepicker.css" />
-<link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap.min.css" />
-<link href="<?= base_url(); ?>css/mine.css" rel="stylesheet" />
- <?php require_once(APPPATH . 'views/permission.php'); ?> 
-        
-
-<div class="scroll row-fluid span12 ">
-        <h4>Metar Book (Observed every hour)Aviation Routine Weather Report</h4>
-        <?php echo $this->session->flashdata('msg'); ?>
-<div class="col-md-2">
-   
-        <h4>Today's metar</h4>                                            
-
-        <table id="sample-table-2" class="span12 table table-striped table-bordered table-hover" >
-
-            <tbody>  
-
-                <tr>
-                    <td class="center-head">
-                        <label>
-                            METAR/SPECI
-                        </label>
-                    </td>
-
-                    <td class="center">
-                        <a href="#">CCCC</a>
-                    </td>
+            <link rel="stylesheet" href="<?= base_url(); ?>assets/css/chosen.css" />
+            <link rel="stylesheet" href="<?= base_url(); ?>assets/css/datepicker.css" />
+            <link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap-timepicker.css" />
+            <link rel="stylesheet" href="<?= base_url(); ?>assets/css/daterangepicker.css" />
+            <link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap.min.css" />
+            <link href="<?= base_url(); ?>css/mine.css" rel="stylesheet" />
+            <?php require_once(APPPATH . 'views/permission.php'); ?> 
 
 
-                    <td class="center">
-                        <a href="#">YYGGgg<span class="degree">z</span></a>
-                    </td>
+            <div class="scroll row-fluid span12 ">
+                <h4>Metar Book (Observed every hour)Aviation Routine Weather Report</h4>
+                <?php echo $this->session->flashdata('msg'); ?>
+                <div class="col-md-2">
 
-                    <td class="center">
-                        <a href="#">Dddff/f<span class="foot-note">m</span>/f<span class="foot-note">m</span></a>
-                    </td>
+                    <h4>Today's metar</h4>                                            
 
+                    <table id="sample-table-2" class="span12 table table-striped table-bordered table-hover" >
 
-                    <td class="center">
-                        <a href="#">WW or CAVOK</a>
-                    </td>
-                    <td class="center-head">
-                        <label>
-                            <a href="#">W<span class="foot-note">1</span>W<span class="foot-note">1</span></a>
+                        <tbody>  
 
-                        </label>
-                    </td>
+                            <tr>
+                                <td class="center">
+                                    APPROVE
+                                </td>
+                                <td class="center-head">
+                                    <label>
+                                        METAR/SPECI
+                                    </label>
+                                </td>
 
-                    <td class="center" >
-                        <a href="#">N<span class="foot-note">1</span>CCh<span class="foot-note">1</span>h<span class="foot-note">1</span>N<span class="foot-note">n</span>CChhhN<span class="foot-note">h</span>CChhh</a>
-                    </td>
-                    <td class="center" >
-                        <a href="#">A/temperature</a>
-                    </td>
-
-                    <td class="center" >
-                        <a href="#">Dew point</a>
-                    </td>
-                    <td class="center" >
-                        <a href="#">Wet Bulb</a>
-                    </td>
-
-                    <td class="center">
-                        <a href="#">TT/T<span class="foot-note">d</span>T<span class="foot-note">d</span></a>
-                    </td>
-
-                    <td class="center" >
-                        <a href="#">QNH(hpa)</a>
-                    </td>
-                    <td class="center">
-                        <a href="#">QNH(in)</a>
-                    </td>
-                    <td class="center-head">
-                        <a href="#">QFE(hpa)</a>
-                    </td>
-
-                    <td class="center">
-                        <a href="#">QFE(in)</a>
-                    </td>
-                    <td class="center">
-                        <a href="#">RE W1W1</a>
-                    </td>
-                </tr>   
-                <?php
-                if (is_array($metas) && count($metas)) {
-                    foreach ($metas as $loop) {
-                        ?>  
-                        <tr>
-                            <td class="small" ><?= $loop->type ?></td>
-                            <td class="small" ><?= $loop->station ?> </td>
-                            <td class="small"> <?= $loop->datetime ?></td>
-                            <td class="small"><?= $loop->wind_direction . ' ' . $loop->wind_speed . ' ' . $loop->unit ?>     </td>
-                            <td class="small" > <?= $loop->visibility ?>  </td>
-                            <td class="small" ><?= $loop->present_weather ?> </td>
-                            <td class="small"><?= $loop->cloud ?>  </td>
-                            <td class="small"><?= $loop->air_temperature ?>  </td>
-
-                            <td class="small"><?= $loop->dew_temperature ?></td>
-                            <td class="small"><?= $loop->wet_bulb ?>  </td>
-
-                            <td class="small"><?= $loop->air_temperature . '/' . $loop->dew_temperature ?> </td>
-                            <td class="small" ><?= $loop->station_pressure_hpa ?>  </td>
-                            <td class="small"> <?php
-                                if ($loop->station_pressure_hpa != "")
-                                    echo round(0.02952998751 * $loop->station_pressure_hpa, 2);
-                                ?></td>
-                            <td class="small" ><?= $loop->sea_pressure_hpa ?>  </td>
-                            <td class="small"> </td>
-                            <td class="small" ><?= $loop->recent_weather ?> </td>
-
-                        </tr>
-
-                        <?php
-                    }
-                }
-                ?>
-
-            </tbody>
-        </table>
-
- <label>Day/Month/Year </label>
- 
-                                                                    <?php $months = array(1 => "January", 2 => "February", 3 => "March", 4 => "April", 5 => "May", 6 => "June", 7 => "July", 8 => "August", 9 => "September", 10 => "October", 11 => "November", 12 => "December"); ?>
-
-                                                                    <div class="span12">
-                                                                        <select class=" col-md-2 no"  name="day" id="day">
-                                                                            <option value=""></option>
-                                <?php for($d = 1; $d<=31; $d++ )
-                                    echo "<option value='$d'>$d</option>"?>
-                            </select>
-                                                                        <select  name="month" id="month" >
-                                                                             <option value=""></option>
-                                                                            <?php for ($m = 1; $m <= 12; $m++)
-                                                                                echo "<option value='$m'>" . $months[$m] . "</option>"
-                                                                                ?>
-                                                                        </select>
-                                                                        <select name="year" id="year" >
-                                                                             <option value=""></option>
-                                                                            <?php for ($y = date('Y'); $y >= 1902; $y--)
-                                                                                echo "<option value='$y'>$y</option>"
-                                                                                ?>
-                                                                        </select>
-                                                                        <button type="button" class="btn btn-info btn-small" id="generate" >generate</button>
-                                                                        <input type="button" class="btn btn-info btn-small" onclick="ExportToExcel('datatable')" value="Export to Excel">
+                                <td class="center">
+                                    <a href="#">CCCC</a>
+                                </td>
 
 
+                                <td class="center">
+                                    <a href="#">YYGGgg<span class="degree">z</span></a>
+                                </td>
 
-                                                                    </div>
-    <span id="Loading"  name ="Loading"><img src="<?= base_url(); ?>images/ajax-loader.gif" alt="Ajax Indicator" /></span><br>
+                                <td class="center">
+                                    <a href="#">Dddff/f<span class="foot-note">m</span>/f<span class="foot-note">m</span></a>
+                                </td>
 
-</div>    
-</div>   
+
+                                <td class="center">
+                                    <a href="#">WW or CAVOK</a>
+                                </td>
+                                <td class="center-head">
+                                    <label>
+                                        <a href="#">W<span class="foot-note">1</span>W<span class="foot-note">1</span></a>
+
+                                    </label>
+                                </td>
+
+                                <td class="center" >
+                                    <a href="#">N<span class="foot-note">1</span>CCh<span class="foot-note">1</span>h<span class="foot-note">1</span>N<span class="foot-note">n</span>CChhhN<span class="foot-note">h</span>CChhh</a>
+                                </td>
+                                <td class="center" >
+                                    <a href="#">A/temperature</a>
+                                </td>
+
+                                <td class="center" >
+                                    <a href="#">Dew point</a>
+                                </td>
+                                <td class="center" >
+                                    <a href="#">Wet Bulb</a>
+                                </td>
+
+                                <td class="center">
+                                    <a href="#">TT/T<span class="foot-note">d</span>T<span class="foot-note">d</span></a>
+                                </td>
+
+                                <td class="center" >
+                                    <a href="#">QNH(hpa)</a>
+                                </td>
+                                <td class="center">
+                                    <a href="#">QNH(in)</a>
+                                </td>
+                                <td class="center-head">
+                                    <a href="#">QFE(hpa)</a>
+                                </td>
+
+                                <td class="center">
+                                    <a href="#">QFE(in)</a>
+                                </td>
+                                <td class="center">
+                                    <a href="#">RE W1W1</a>
+                                </td>
+
+
+                            </tr>   
+                            <?php
+                            if (is_array($metas) && count($metas)) {
+                                foreach ($metas as $loop) {
+                                    ?>  
+                                    <tr>
+                                        <td >
+
+                                            <?php
+                                            if ($loop->approved == "F") {
+                                                ?>
+                                                <div class="btn-group" data-toggle="buttons" data-toggle-default-class="btn-default">
+                                                    <label class="btn btn-xs btn-default" data-toggle-class="btn-success" value="<?= $loop->id; ?>">
+                                                        <input type="radio" name="status" id="<?= $loop->approved; ?>" value="<?= $loop->id; ?>" />
+                                                        Approve
+                                                    </label>
+                                                    <label class="btn btn-xs btn-danger active" data-toggle-class="btn-danger" value="<?= $loop->id; ?>">
+                                                        <input type="radio" name="status" id="<?= $loop->approved; ?>" value="<?= $loop->id; ?>" checked />
+                                                        No
+                                                    </label>
+                                                </div> 
+                                            <?php } ?>
+
+                                            <?php
+                                            if ($loop->status != "F") {
+                                                ?>
+
+                                            <?php } ?>
+
+                                        </td>
+
+
+                                        <td class="small" ><?= $loop->type ?></td>
+                                        <td class="small" ><?= $loop->station ?> </td>
+                                        <td class="small"> <?= $loop->datetime ?></td>
+                                        <td class="small"><?= $loop->wind_direction . ' ' . $loop->wind_speed . ' ' . $loop->unit ?>     </td>
+                                        <td class="small" > <?= $loop->visibility ?>  </td>
+                                        <td class="small" ><?= $loop->present_weather ?> </td>
+                                        <td class="small"><?= $loop->cloud ?>  </td>
+                                        <td class="small"><?= $loop->air_temperature ?>  </td>
+
+                                        <td class="small"><?= $loop->dew_temperature ?></td>
+                                        <td class="small"><?= $loop->wet_bulb ?>  </td>
+
+                                        <td class="small"><?= $loop->air_temperature . '/' . $loop->dew_temperature ?> </td>
+                                        <td class="small" ><?= $loop->station_pressure_hpa ?>  </td>
+                                        <td class="small"> <?php
+                                            if ($loop->station_pressure_hpa != "")
+                                                echo round(0.02952998751 * $loop->station_pressure_hpa, 2);
+                                            ?></td>
+                                        <td class="small" ><?= $loop->sea_pressure_hpa ?>  </td>
+                                        <td class="small"> </td>
+                                        <td class="small" ><?= $loop->recent_weather ?> </td>
+
+                                    </tr>
+
+                                    <?php
+                                }
+                            }
+                            ?>
+
+                        </tbody>
+                    </table>
+
+                    <label>Day/Month/Year </label>
+
+                    <?php $months = array(1 => "January", 2 => "February", 3 => "March", 4 => "April", 5 => "May", 6 => "June", 7 => "July", 8 => "August", 9 => "September", 10 => "October", 11 => "November", 12 => "December"); ?>
+
+                    <div class="span12">
+                        <select class=" col-md-2 no"  name="day" id="day">
+                            <option value=""></option>
+                            <?php
+                            for ($d = 1; $d <= 31; $d++)
+                                echo "<option value='$d'>$d</option>"
+                                ?>
+                        </select>
+                        <select  name="month" id="month" >
+                            <option value=""></option>
+                            <?php
+                            for ($m = 1; $m <= 12; $m++)
+                                echo "<option value='$m'>" . $months[$m] . "</option>"
+                                ?>
+                        </select>
+                        <select name="year" id="year" >
+                            <option value=""></option>
+                            <?php
+                            for ($y = date('Y'); $y >= 1902; $y--)
+                                echo "<option value='$y'>$y</option>"
+                                ?>
+                        </select>
+                        <button type="button" class="btn btn-info btn-small" id="generate" >generate</button>
+                        <input type="button" class="btn btn-info btn-small" onclick="ExportToExcel('datatable')" value="Export to Excel">
+                        <input type="button" onclick="printDiv('printableArea')" value="print" />
+
+
+
+                    </div>
+                    <div id="printableArea">
+                        <span id="Loading"  name ="Loading"><img src="<?= base_url(); ?>images/ajax-loader.gif" alt="Ajax Indicator" /></span><br>
+                    </div> 
+                </div>    
+            </div>   
+        </div> 
+    </div> 
 </div> 
-          </div> 
-     </div> 
 
 
 
@@ -178,13 +215,23 @@
                 inp.setAttribute('readonly', 'true');
                 inp.removeAttribute('disabled');
                 inp.value = "This text field is readonly!";
-            }
-            else {
+            } else {
                 inp.setAttribute('disabled', 'disabled');
                 inp.removeAttribute('readonly');
                 inp.value = "This text field is disabled!";
             }
         });
+        
+                            function printDiv(divName) {
+                                var printContents = document.getElementById(divName).innerHTML;
+                                var originalContents = document.body.innerHTML;
+
+                                document.body.innerHTML = printContents;
+
+                                window.print();
+
+                                document.body.innerHTML = originalContents;
+                            }
 
 
         $(".chzn-select").chosen();
@@ -210,7 +257,7 @@
         $('.input-mask-hpa').mask('999.9');
         $('.input-mask-height').mask('9999');
         $('.input-mask-eyescript').mask('~9.99 ~9.99 999');
-       
+
 
 
 
@@ -302,15 +349,15 @@
         $('#stationinch').val(inch);
 
     }); //end change
-     $("#generate").on ("click",function (e) {
-         
-            var station = $("#station").val();
-            var month = $("#month").val();
-            var year = $("#year").val();
-             var day = $("#day").val();
+    $("#generate").on("click", function (e) {
+
+        var station = $("#station").val();
+        var month = $("#month").val();
+        var year = $("#year").val();
+        var day = $("#day").val();
         $('#meta').hide();
         $('#Loading').show();
-        $.post("<?php echo base_url() ?>index.php/metar/get", {datenow: $("#datenow").val(),station:$("#code").val(),day:day,month:month,year:year}
+        $.post("<?php echo base_url() ?>index.php/metar/get", {datenow: $("#datenow").val(), station: $("#code").val(), day: day, month: month, year: year}
         , function (response) {
             //#emailInfo is a span which will show you message
             $('#Loading').hide();
@@ -332,7 +379,7 @@
         var actual = $('#actualrain').val();
         var anemometer = $('#anemometer').val();
         var wind = $('#windrun').val();
-      
+
         var station = $("#station").val();
         console.log(station);
         $('#Loading_daily').show();
@@ -370,3 +417,45 @@
         window.open('data:application/vnd.ms-excel,' + encodeURIComponent(html));
     }
 </script>
+
+<script>
+
+
+    $('.btn-group[data-toggle=buttons]').each(function (i, e) {
+        var default_class = $(e).data('toggle-default-class') || 'btn-default';
+
+        $(e).find('label')
+                .click(function (event) {
+                    $(e).find('label')
+                            .each(function (i, e) {
+                                if (!(e == event.target)) {
+                                    $(e).removeClass($(e).data('toggle-class'))
+                                            .addClass(default_class);
+
+                                    $(e).find('input').removeAttr('checked');
+                                    // console.log($(e).find("input").attr("id"));
+
+
+                                    $.post("<?php echo base_url() ?>index.php/metar/activate", {
+                                        id: $(e).find("input").val(),
+                                        approve: $(e).find("input").attr("id")
+
+                                    }, function (response) {
+                                        // console.log(response);
+                                    });
+                                    // alert("active");
+
+                                } else {
+                                    $(e).removeClass(default_class)
+                                            .addClass($(e).data('toggle-class'));
+
+                                    $(e).find('input')
+                                            .attr('checked', 1);
+
+                                }
+                            });
+                });
+    });
+
+</script>
+

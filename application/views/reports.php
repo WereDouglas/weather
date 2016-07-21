@@ -10,7 +10,7 @@
 
 <div class="main-container container-fluid scroll">
     <div class="page-content">       
-        <div class="row-fluid" id="printableArea">
+        <div class="row-fluid" >
             <div class="span12">
                 <div class="tabbable tabs-top">
                     <div class="tab-content">
@@ -89,7 +89,7 @@
 
 
 
-                                                    <div class="span12">  
+                                                    <div class="span12" id="printableArea">  
                                                         <span id="loading_card" name ="loading_card"><img src="<?= base_url(); ?>images/ajax-loader.gif" alt="loading............" /></span>
                                                         <hr>
                                                         <div class="onload" id="onload">
@@ -257,7 +257,7 @@
                                                                     </tr>
                                                                     <tr>
                                                                         <td colspan="10">
-                                                                            <h5> <strong>  STATION NAME:</strong>  <?php echo $this->session->userdata('name'); ?></h5>
+                                                                            <h5> <strong>  STATION NAME:</strong>  <?php echo $this->session->userdata('station'); ?></h5>
                                                                         </td>
 
 
@@ -618,54 +618,54 @@
 <?php require_once(APPPATH . 'views/footer_report.php'); ?>
 <script src="<?= base_url(); ?>assets/js/fullcalendar.min.js"></script>
 <script type="text/javascript">
-    $(function () {
+                                                                            $(function () {
 
-        /* initialize the external events
-         -----------------------------------------------------------------*/
+                                                                                /* initialize the external events
+                                                                                 -----------------------------------------------------------------*/
 
-        $('#external-events div.external-event').each(function () {
+                                                                                $('#external-events div.external-event').each(function () {
 
-            // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
-            // it doesn't need to have a start or end
-            var eventObject = {
-                title: $.trim($(this).text()) // use the element's text as the event title
-            };
+                                                                                    // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+                                                                                    // it doesn't need to have a start or end
+                                                                                    var eventObject = {
+                                                                                        title: $.trim($(this).text()) // use the element's text as the event title
+                                                                                    };
 
-            // store the Event Object in the DOM element so we can get to it later
-            $(this).data('eventObject', eventObject);
+                                                                                    // store the Event Object in the DOM element so we can get to it later
+                                                                                    $(this).data('eventObject', eventObject);
 
-            // make the event draggable using jQuery UI
-            $(this).draggable({
-                zIndex: 999,
-                revert: true, // will cause the event to go back to its
-                revertDuration: 0  //  original position after the drag
-            });
+                                                                                    // make the event draggable using jQuery UI
+                                                                                    $(this).draggable({
+                                                                                        zIndex: 999,
+                                                                                        revert: true, // will cause the event to go back to its
+                                                                                        revertDuration: 0  //  original position after the drag
+                                                                                    });
 
-        });
-
-
+                                                                                });
 
 
-        /* initialize the calendar
-         -----------------------------------------------------------------*/
-
-        var date = new Date();
-        var d = date.getDate();
-        var m = date.getMonth();
-        var y = date.getFullYear();
 
 
-        var calendar = $('#calendar').fullCalendar({
-            buttonText: {
-                prev: '<i class="icon-chevron-left"></i>',
-                next: '<i class="icon-chevron-right"></i>'
-            },
-            header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'month,agendaWeek,agendaDay'
-            },
-            events: [
+                                                                                /* initialize the calendar
+                                                                                 -----------------------------------------------------------------*/
+
+                                                                                var date = new Date();
+                                                                                var d = date.getDate();
+                                                                                var m = date.getMonth();
+                                                                                var y = date.getFullYear();
+
+
+                                                                                var calendar = $('#calendar').fullCalendar({
+                                                                                    buttonText: {
+                                                                                        prev: '<i class="icon-chevron-left"></i>',
+                                                                                        next: '<i class="icon-chevron-right"></i>'
+                                                                                    },
+                                                                                    header: {
+                                                                                        left: 'prev,next today',
+                                                                                        center: 'title',
+                                                                                        right: 'month,agendaWeek,agendaDay'
+                                                                                    },
+                                                                                    events: [
 <?php
 if (is_array($daily) && count($daily)) {
 
@@ -675,124 +675,124 @@ if (is_array($daily) && count($daily)) {
         $m = $value[1];
         $d = $value[2];
         ?>
-                        {
-                            title: '<?php echo $loops->actual . 'mm'; ?>',
-                            start: new Date(<?= $y ?>, <?= $m - 1 ?>,<?= $d ?>),
-                            className: 'label-success'},
+                                                                                                {
+                                                                                                    title: '<?php echo $loops->actual . 'mm'; ?>',
+                                                                                                    start: new Date(<?= $y ?>, <?= $m - 1 ?>,<?= $d ?>),
+                                                                                                    className: 'label-success'},
         <?php
     }
 }
 ?>
 
 
-            ]
-            ,
-            editable: true,
-            droppable: true, // this allows things to be dropped onto the calendar !!!
-            drop: function (date, allDay) { // this function is called when something is dropped
+                                                                                    ]
+                                                                                    ,
+                                                                                    editable: true,
+                                                                                    droppable: true, // this allows things to be dropped onto the calendar !!!
+                                                                                    drop: function (date, allDay) { // this function is called when something is dropped
 
-                // retrieve the dropped element's stored Event Object
-                var originalEventObject = $(this).data('eventObject');
-                var $extraEventClass = $(this).attr('data-class');
-
-
-                // we need to copy it, so that multiple events don't have a reference to the same object
-                var copiedEventObject = $.extend({}, originalEventObject);
-
-                // assign it the date that was reported
-                copiedEventObject.start = date;
-                copiedEventObject.allDay = allDay;
-                if ($extraEventClass)
-                    copiedEventObject['className'] = [$extraEventClass];
-
-                // render the event on the calendar
-                // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
-                $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
-
-                // is the "remove after drop" checkbox checked?
-                if ($('#drop-remove').is(':checked')) {
-                    // if so, remove the element from the "Draggable Events" list
-                    $(this).remove();
-                }
-
-            }
-            ,
-            selectable: true,
-            selectHelper: true,
-            select: function (start, end, allDay) {
-
-                bootbox.prompt("New Event Title:", function (title) {
-                    if (title !== null) {
-                        calendar.fullCalendar('renderEvent',
-                                {
-                                    title: title,
-                                    start: start,
-                                    end: end,
-                                    allDay: allDay
-                                },
-                                true // make the event "stick"
-                                );
-                    }
-                });
+                                                                                        // retrieve the dropped element's stored Event Object
+                                                                                        var originalEventObject = $(this).data('eventObject');
+                                                                                        var $extraEventClass = $(this).attr('data-class');
 
 
-                calendar.fullCalendar('unselect');
+                                                                                        // we need to copy it, so that multiple events don't have a reference to the same object
+                                                                                        var copiedEventObject = $.extend({}, originalEventObject);
 
-            }
-            ,
-            eventClick: function (calEvent, jsEvent, view) {
+                                                                                        // assign it the date that was reported
+                                                                                        copiedEventObject.start = date;
+                                                                                        copiedEventObject.allDay = allDay;
+                                                                                        if ($extraEventClass)
+                                                                                            copiedEventObject['className'] = [$extraEventClass];
 
-                var form = $("<form class='form-inline'><label>Change event name &nbsp;</label></form>");
-                form.append("<input autocomplete=off type=text value='" + calEvent.title + "' /> ");
-                form.append("<button type='submit' class='btn btn-small btn-success'><i class='icon-ok'></i> Save</button>");
+                                                                                        // render the event on the calendar
+                                                                                        // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
+                                                                                        $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
 
-                var div = bootbox.dialog(form,
-                        [
-                            {
-                                "label": "<i class='icon-trash'></i> Delete Event",
-                                "class": "btn-small btn-danger",
-                                "callback": function () {
-                                    calendar.fullCalendar('removeEvents', function (ev) {
-                                        return (ev._id == calEvent._id);
-                                    })
-                                }
-                            }
-                            ,
-                            {
-                                "label": "<i class='icon-remove'></i> Close",
-                                "class": "btn-small"
-                            }
-                        ]
-                        ,
-                        {
-                            // prompts need a few extra options
-                            "onEscape": function () {
-                                div.modal("hide");
-                            }
-                        }
-                );
+                                                                                        // is the "remove after drop" checkbox checked?
+                                                                                        if ($('#drop-remove').is(':checked')) {
+                                                                                            // if so, remove the element from the "Draggable Events" list
+                                                                                            $(this).remove();
+                                                                                        }
 
-                form.on('submit', function () {
-                    calEvent.title = form.find("input[type=text]").val();
-                    calendar.fullCalendar('updateEvent', calEvent);
-                    div.modal("hide");
-                    return false;
-                });
+                                                                                    }
+                                                                                    ,
+                                                                                    selectable: true,
+                                                                                    selectHelper: true,
+                                                                                    select: function (start, end, allDay) {
+
+                                                                                        bootbox.prompt("New Event Title:", function (title) {
+                                                                                            if (title !== null) {
+                                                                                                calendar.fullCalendar('renderEvent',
+                                                                                                        {
+                                                                                                            title: title,
+                                                                                                            start: start,
+                                                                                                            end: end,
+                                                                                                            allDay: allDay
+                                                                                                        },
+                                                                                                        true // make the event "stick"
+                                                                                                        );
+                                                                                            }
+                                                                                        });
 
 
-                //console.log(calEvent.id);
-                //console.log(jsEvent);
-                //console.log(view);
+                                                                                        calendar.fullCalendar('unselect');
 
-                // change the border color just for fun
-                //$(this).css('border-color', 'red');
+                                                                                    }
+                                                                                    ,
+                                                                                    eventClick: function (calEvent, jsEvent, view) {
 
-            }
+                                                                                        var form = $("<form class='form-inline'><label>Change event name &nbsp;</label></form>");
+                                                                                        form.append("<input autocomplete=off type=text value='" + calEvent.title + "' /> ");
+                                                                                        form.append("<button type='submit' class='btn btn-small btn-success'><i class='icon-ok'></i> Save</button>");
 
-        });
+                                                                                        var div = bootbox.dialog(form,
+                                                                                                [
+                                                                                                    {
+                                                                                                        "label": "<i class='icon-trash'></i> Delete Event",
+                                                                                                        "class": "btn-small btn-danger",
+                                                                                                        "callback": function () {
+                                                                                                            calendar.fullCalendar('removeEvents', function (ev) {
+                                                                                                                return (ev._id == calEvent._id);
+                                                                                                            })
+                                                                                                        }
+                                                                                                    }
+                                                                                                    ,
+                                                                                                    {
+                                                                                                        "label": "<i class='icon-remove'></i> Close",
+                                                                                                        "class": "btn-small"
+                                                                                                    }
+                                                                                                ]
+                                                                                                ,
+                                                                                                {
+                                                                                                    // prompts need a few extra options
+                                                                                                    "onEscape": function () {
+                                                                                                        div.modal("hide");
+                                                                                                    }
+                                                                                                }
+                                                                                        );
+
+                                                                                        form.on('submit', function () {
+                                                                                            calEvent.title = form.find("input[type=text]").val();
+                                                                                            calendar.fullCalendar('updateEvent', calEvent);
+                                                                                            div.modal("hide");
+                                                                                            return false;
+                                                                                        });
 
 
-    })
+                                                                                        //console.log(calEvent.id);
+                                                                                        //console.log(jsEvent);
+                                                                                        //console.log(view);
+
+                                                                                        // change the border color just for fun
+                                                                                        //$(this).css('border-color', 'red');
+
+                                                                                    }
+
+                                                                                });
+
+
+                                                                            })
 </script>
 <script type="text/javascript">
     function ExportToExcel(datatable) {

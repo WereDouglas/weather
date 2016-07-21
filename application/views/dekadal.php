@@ -23,37 +23,53 @@
             <div class="span12">
                 <!--PAGE CONTENT BEGINS-->
 
-                <div class="form-group well alert-info">
 
 
-                    <span class="span3 ">Station : <select class="span6" id="station" name="station">
-                            <option value="<?= $user->station ?>" /><?= $user->station ?>
-                            <?php
-                            if (is_array($stations) && count($stations)) {
-                                foreach ($stations as $loop) {
-                                    ?>                        
-                                    <option value="<?= $loop->name ?>" /><?= $loop->name ?>
+<!--                    <span> Select the date:<input class="span2 date-picker" id="datenow" value="<?php echo date('Y-m-d'); ?>"  name="datenow" type="text" data-date-format="yyyy-mm-dd" />
+     <span class="add-on">
+         <i class="icon-calendar"></i>
+     </span>
+ </span>-->
 
-
-                                <?php }
-                            } ?>
-                        </select></span>
-
-                    <span for="form-field-select-1">Station No:<input class="form-control"  id="number" readonly="" name="number" ></input>   
-                    </span>
-                    <span> Select the date:<input class="span2 date-picker" id="datenow" value="<?php echo date('Y-m-d'); ?>"  name="datenow" type="text" data-date-format="yyyy-mm-dd" />
-                        <span class="add-on">
-                            <i class="icon-calendar"></i>
-                        </span>
-                    </span>
-                </div>
                 <div class="scroll well-large"> 
-                    <label>Month/Year </label>
+                    <label> Station  </label><select class="col-sm-3" id="station" name="station">
+                        <option value="<?= $user->station ?>"  /><?= $user->station ?>
+                        <?php
+                        if (is_array($stations) && count($stations)) {
+                            foreach ($stations as $loop) {
+                                ?>                        
+                                <option value="<?= $loop->name ?>" /><?= $loop->name ?>
 
-<?php $months = array(1 => "January", 2 => "February", 3 => "March", 4 => "April", 5 => "May", 6 => "June", 7 => "July", 8 => "August", 9 => "September", 10 => "October", 11 => "November", 12 => "December"); ?>
+
+                                <?php
+                            }
+                        }
+                        ?>
+                    </select>
+
+                    <label> Station No </label><input class="form-control"  id="number" readonly="" name="number" ></input>   
+
+
+                    <?php $months = array(1 => "January", 2 => "February", 3 => "March", 4 => "April", 5 => "May", 6 => "June", 7 => "July", 8 => "August", 9 => "September", 10 => "October", 11 => "November", 12 => "December"); ?>
 
                     <div class="span12">
-
+                        <label>Start Date </label>
+                        <select class=" col-md-2 no"  name="startdate" id="startdate">
+                            <option value=""></option>
+                            <?php
+                            for ($d = 1; $d <= 31; $d++)
+                                echo "<option value='$d'>$d</option>"
+                                ?>
+                        </select>
+                        <label>End Date </label>
+                        <select class=" col-md-2 no"  name="enddate" id="enddate">
+                            <option value=""></option>
+                            <?php
+                            for ($d = 1; $d <= 31; $d++)
+                                echo "<option value='$d'>$d</option>"
+                                ?>
+                        </select>
+                        <label>Month/Year </label>
                         <select  name="month" id="month" >
                             <option value=""></option>
                             <?php
@@ -70,12 +86,13 @@
                         </select>
                         <button type="button" class="btn btn-info btn-small" id="generate" >generate</button>
                         <input type="button" class="btn btn-info btn-small" onclick="ExportToExcel('datatable')" value="Export to Excel">
-
+                        <input type="button" onclick="printDiv('printableArea')" value="print" />
 
 
                     </div>
-                    <span id="Loading"  name ="Loading"><img src="<?= base_url(); ?>images/ajax-loader.gif" alt="Loading................" /></span><br>
-
+                    <div id="printableArea">
+                        <span id="Loading"  name ="Loading"><img src="<?= base_url(); ?>images/ajax-loader.gif" alt="Loading................" /></span><br>
+                    </div>
                     <!--        <div class="scroll row-fluid">           
                      <table id="datatable" class="table table-striped table-bordered table-hover">
                      
@@ -213,29 +230,31 @@
                         foreach ($dekadal as $loop) {
                             $pieces = explode("-", $loop->date);
                             ?>                              
-                                        
-                                           <tr>
-                                     <td class="small" ><a><?php echo $cr++; ?></a></td>
-                                     <td class="small" ><?php echo $loop->date; ?></td>
-                                     <td class="small" ><?= $loop->max ?>  </td>
-                                     <td class="small">  <?= $loop->min ?></td>
-                                     <td class="small"> <?= $loop->air9; ?></td>
-                                     <td class="small" > <?= $loop->wet9; ?></td>
-                                     <td class="small" > <?= $loop->dew9; ?> </td>
-                                     <td class="small" > <?= $loop->humid9; ?></td>
-                                     <td class="small"> <?= $loop->wind9; ?></td>
-                                     <td class="small"> <?= $loop->speed9; ?></td>
-                                     <td class="small"> <?= $loop->rain; ?></td>
-                                     <td class="small"> <?= $loop->air15; ?></td>
-                                     <td class="small" > <?= $loop->wet15; ?></td>
-                                     <td class="small" > <?= $loop->dew15; ?> </td>
-                                     <td class="small" > <?= $loop->humid15; ?></td>
-                                     <td class="small"> <?= $loop->wind15; ?></td>
-                                     <td class="small"> <?= $loop->speed15; ?></td>
-                                     <td class="small"> <?= $loop->rain15; ?></td>
-                                         </tr>
-    <?php }
-} ?> 
+                                                                                        
+                                                                                           <tr>
+                                                                                     <td class="small" ><a><?php echo $cr++; ?></a></td>
+                                                                                     <td class="small" ><?php echo $loop->date; ?></td>
+                                                                                     <td class="small" ><?= $loop->max ?>  </td>
+                                                                                     <td class="small">  <?= $loop->min ?></td>
+                                                                                     <td class="small"> <?= $loop->air9; ?></td>
+                                                                                     <td class="small" > <?= $loop->wet9; ?></td>
+                                                                                     <td class="small" > <?= $loop->dew9; ?> </td>
+                                                                                     <td class="small" > <?= $loop->humid9; ?></td>
+                                                                                     <td class="small"> <?= $loop->wind9; ?></td>
+                                                                                     <td class="small"> <?= $loop->speed9; ?></td>
+                                                                                     <td class="small"> <?= $loop->rain; ?></td>
+                                                                                     <td class="small"> <?= $loop->air15; ?></td>
+                                                                                     <td class="small" > <?= $loop->wet15; ?></td>
+                                                                                     <td class="small" > <?= $loop->dew15; ?> </td>
+                                                                                     <td class="small" > <?= $loop->humid15; ?></td>
+                                                                                     <td class="small"> <?= $loop->wind15; ?></td>
+                                                                                     <td class="small"> <?= $loop->speed15; ?></td>
+                                                                                     <td class="small"> <?= $loop->rain15; ?></td>
+                                                                                         </tr>
+                            <?php
+                        }
+                    }
+                    ?> 
                      
                         
                      
@@ -253,58 +272,82 @@
 
         </div><!--/.main-container-->
     </div>
-<?php require_once(APPPATH . 'views/footer_report.php'); ?>
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-small btn-inverse">
+        <i class="icon-double-angle-up icon-only bigger-110"></i>
+    </a>
+
+    <!--basic scripts-->
+
+    <!--[if !IE]>-->
+
+    <script src="<?= base_url(); ?>js/2.0.3-jquery.min.js"></script>
+
+
+    <script src="<?= base_url(); ?>assets/js/bootstrap.min.js"></script>
+
+
 
     <script type="text/javascript">
-        $('#Loading').hide();
-        $('#Loading_daily').hide();
+                            $('#Loading').hide();
+                            $('#Loading_daily').hide();
 
-        $('#station').change(function () {
-            var station = $('#station').val();
-            if (station != "") {
+                            $('#station').change(function () {
+                                var station = $('#station').val();
+                                if (station != "") {
 
-                $.post("<?= base_url() ?>/index.php/station/get", {station: $("#station").val()}
-                , function (station) {
-                    var json = JSON.parse(station);
-                    $('#number').empty();
-                    $('#code').empty();
-                    //   console.log(json[0].number);
-                    $("#number").val(json[0].number);
-                    $("#code").val(json[0].code);
+                                    $.post("<?= base_url() ?>/index.php/station/get", {station: $("#station").val()}
+                                    , function (station) {
+                                        var json = JSON.parse(station);
+                                        $('#number').empty();
+                                        $('#code').empty();
+                                        //   console.log(json[0].number);
+                                        $("#number").val(json[0].number);
+                                        $("#code").val(json[0].code);
 
-                });
-
-
-            } else {
-
-                $('#number').empty();
-                $('#code').empty();
-            }
-        }); //end change
+                                    });
 
 
+                                } else {
 
-        $("#generate").on("click", function (e) {
+                                    $('#number').empty();
+                                    $('#code').empty();
+                                }
+                            }); //end change
 
-            var station = $("#station").val();
-            var month = $("#month").val();
-            var year = $("#year").val();
+                            function printDiv(divName) {
+                                var printContents = document.getElementById(divName).innerHTML;
+                                var originalContents = document.body.innerHTML;
 
-            $('#meta').hide();
-            $('#Loading').show();
-            $.post("<?php echo base_url() ?>index.php/dekadal/gets", {datenow: $("#datenow").val(), station: $("#station").val(), month: month, year: year}
-            , function (response) {
-                //#emailInfo is a span which will show you message
-                $('#Loading').hide();
-                setTimeout(finishAjaxitem('Loading', escape(response)), 200);
+                                document.body.innerHTML = printContents;
 
-            }); //end change
+                                window.print();
 
-            function finishAjaxitem(id, response) {
-                $('#' + id).html(unescape(response));
-                $('#' + id).fadeIn();
-            }
-        });
+                                document.body.innerHTML = originalContents;
+                            }
+
+                            $("#generate").on("click", function (e) {
+
+                                var station = $("#station").val();
+                                var month = $("#month").val();
+                                var year = $("#year").val();
+                                var startdate = $("#startdate").val();
+                                var enddate = $("#enddate").val();
+
+                                $('#meta').hide();
+                                $('#Loading').show();
+                                $.post("<?php echo base_url() ?>index.php/dekadal/gets", {datenow: $("#datenow").val(), station: $("#station").val(), month: month, year: year, startdate: startdate, enddate: enddate}
+                                , function (response) {
+                                    //#emailInfo is a span which will show you message
+                                    $('#Loading').hide();
+                                    setTimeout(finishAjaxitem('Loading', escape(response)), 200);
+
+                                }); //end change
+
+                                function finishAjaxitem(id, response) {
+                                    $('#' + id).html(unescape(response));
+                                    $('#' + id).fadeIn();
+                                }
+                            });
 
 
     </script>
@@ -315,3 +358,4 @@
             window.open('data:application/vnd.ms-excel,' + encodeURIComponent(html));
         }
     </script>
+

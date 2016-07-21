@@ -26,6 +26,10 @@
                                 <span class="lbl"></span>
                             </label>
                         </th>
+                          <td class="center">
+                                    APPROVE
+                                </td>
+                        
                         <th>Date</th>
                         <th>Station</th>
                         <th class="hidden-480">Amount(mm)</th>
@@ -53,6 +57,31 @@
                                         <span class="lbl"></span>
                                     </label>
                                 </td>
+                                    <td >
+
+                                            <?php
+                                            if ($loop->approved == "F") {
+                                                ?>
+                                                <div class="btn-group" data-toggle="buttons" data-toggle-default-class="btn-default">
+                                                    <label class="btn btn-xs btn-default" data-toggle-class="btn-success" value="<?= $loop->id; ?>">
+                                                        <input type="radio" name="status" id="<?= $loop->approved; ?>" value="<?= $loop->id; ?>" />
+                                                        Approve
+                                                    </label>
+                                                    <label class="btn btn-xs btn-danger active" data-toggle-class="btn-danger" value="<?= $loop->id; ?>">
+                                                        <input type="radio" name="status" id="<?= $loop->approved; ?>" value="<?= $loop->id; ?>" checked />
+                                                       No
+                                                    </label>
+                                                </div> 
+                                            <?php } ?>
+
+                                            <?php
+                                            if ($loop->status != "F") {
+                                                ?>
+                                                
+                                            <?php } ?>
+
+                                        </td>
+
 
                                 <td>
                                     <a href="#"><?= $loop->date ?></a>
@@ -78,14 +107,14 @@
                                     </a>
                                 </td>
                             </tr>
-                        <?php
+                            <?php
                         }
                     }
                     ?>
                 </tbody>
             </table>                                                    
         </div>
-<?php require_once(APPPATH . 'views/footers.php'); ?>
+        <?php require_once(APPPATH . 'views/footers.php'); ?>
 
         <script src="<?php echo base_url(); ?>js/jQuery-2.1.4.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url(); ?>js/bootstrap.min.js" type="text/javascript"></script>
@@ -189,10 +218,49 @@
                     $('#Loading_rainy').hide();
 
                 }
-
-
-
             }); //end change
 
 
         </script>
+
+        <script>
+
+
+            $('.btn-group[data-toggle=buttons]').each(function (i, e) {
+                var default_class = $(e).data('toggle-default-class') || 'btn-default';
+
+                $(e).find('label')
+                        .click(function (event) {
+                            $(e).find('label')
+                                    .each(function (i, e) {
+                                        if (!(e == event.target)) {
+                                            $(e).removeClass($(e).data('toggle-class'))
+                                                    .addClass(default_class);
+
+                                            $(e).find('input').removeAttr('checked');
+                                            // console.log($(e).find("input").attr("id"));
+
+
+                                            $.post("<?php echo base_url() ?>index.php/metar/activate_rain", {
+                                                id: $(e).find("input").val(),
+                                                approve: $(e).find("input").attr("id")
+
+                                            }, function (response) {
+                                                // console.log(response);
+                                            });
+                                            // alert("active");
+
+                                        } else {
+                                            $(e).removeClass(default_class)
+                                                    .addClass($(e).data('toggle-class'));
+
+                                            $(e).find('input')
+                                                    .attr('checked', 1);
+
+                                        }
+                                    });
+                        });
+            });
+
+        </script>
+

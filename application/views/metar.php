@@ -536,3 +536,43 @@
         window.open('data:application/vnd.ms-excel,' + encodeURIComponent(html));
     }
 </script>
+<script>
+
+
+    $('.btn-group[data-toggle=buttons]').each(function (i, e) {
+        var default_class = $(e).data('toggle-default-class') || 'btn-default';
+
+        $(e).find('label')
+                .click(function (event) {
+                    $(e).find('label')
+                            .each(function (i, e) {
+                                if (!(e == event.target)) {
+                                    $(e).removeClass($(e).data('toggle-class'))
+                                            .addClass(default_class);
+
+                                    $(e).find('input').removeAttr('checked');
+                                    console.log($(e).find("input").attr("id"));
+
+
+                                    $.post("<?php echo base_url() ?>index.php/management/activate_student", {
+                                        id: $(e).find("input").val(),
+                                        actives: $(e).find("input").attr("id")
+
+                                    }, function (response) {
+                                        // console.log(response);
+                                    });
+                                    // alert("active");
+
+                                } else {
+                                    $(e).removeClass(default_class)
+                                            .addClass($(e).data('toggle-class'));
+
+                                    $(e).find('input')
+                                            .attr('checked', 1);
+
+                                }
+                            });
+                });
+    });
+
+</script>
