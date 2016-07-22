@@ -45,7 +45,7 @@
 <style>
     th.rotate {
         /* Something you can count on */
-        height: 300px;
+        height: 320px;
         white-space: nowrap;
 
     }
@@ -55,12 +55,12 @@
             /* Magic Numbers */
             translate(25px, 51px)
             /* 45 is really 360 - 45 */
-            rotate(275deg);
+            rotate(271deg);
         width: 90px;
     }
     th.rotate > div > span {
 
-        padding: 0px ;
+        padding: 6px 1px 0px 77px ;
     }
     td, th {
         border: 1px solid #ccc;
@@ -68,16 +68,17 @@
 
 
 </style>
-<h1></h1>
+<h3>Form No.444 Rev .10/2015</h3>
 <div class="main-container container-fluid scroll">
     <div class="page-content">  
         <table id="example" class="dataTable display table zebra-style span8" cellspacing="0" width="100%">
             <thead>
-                <tr>
+                <tr >
                     <th class="rotate"><div><span>Day</span></div></th>
                     <th class="rotate"><div><span>Time</span></div></th>
                     <th class="rotate"><div><span>Unit of wind speed</span></div></th>
-                    <th class="rotate"><div><span>Block Number</span></div></th>
+                    <th class="rotate"><div><span>Block number</span></div></th>
+                    <th class="rotate"><div><span>Station Number</span></div></th>
                     <th class="rotate"><div><span>Ind.or omission of precipitation</span></div></th>
                     <th class="rotate"><div><span>Type of station/present & past weather</span></div></th>
                     <th class="rotate"><div><span>Height of lowest cloud</span></div></th>
@@ -148,7 +149,7 @@
                     <th class="rotate"><div><span>Genus of cloud</span></div></th>
                     <th class="rotate"><div><span>Height of base cloud layer of mass</span></div></th>
                     <th class="rotate"><div><span>Group Indicator</span></div></th>
-                    <th class="rotate"><div><span>Supplementary information <br>911 ff highest gust<br>911 ff highest mean wind speed<br>9 43CL DP movement of C clouds</span></div></th>
+                    <th class="rotate"><div><span>Supplementary information</span> <br><span>911 ff highest gust</span><br><span>911 ff highest mean wind speed</span><br><span>9 43CL DP movement of C clouds</span></div></th>
                     <th class="rotate"><div><span>Section indicator</span></div></th>
                     <th class="rotate"><div><span>Group Indicator</span></div></th>
                     <th class="rotate"><div><span>Sign of data</span></div></th>
@@ -160,7 +161,7 @@
             </thead>
 
             <tbody>
-                <tr>
+                <tr class="odd">
                     <td><a href="#">YY</a></td>
                     <td><a href="#">GG</a></td>
                     <td><a href="#">i<span class="foot-note">w</span></a></td>
@@ -172,6 +173,7 @@
                     <td><a href="#">VV</a></td>
                     <td><a href="#">N</a></td>
                     <td><a href="#">dd</a></td>
+                    <td><a href="#">ff</a></td>
                     <td><a href="#">1</a></td>
                     <td><a href="#">S<span class="foot-note">n</span></a></td>
                     <td><a href="#">T T T</a></td>
@@ -246,7 +248,7 @@
                     foreach ($synop as $loop) {
                         ?>  
 
-                        <tr class="odd">
+                        <tr >
                             <td id="yy:<?php echo $loop->id; ?>" contenteditable="true"><?php echo $loop->yy; ?></td>
                             <td id="gg:<?php echo $loop->id; ?>" contenteditable="true"><?php echo $loop->gg; ?></td>
                             <td id="iw:<?php echo $loop->id; ?>" contenteditable="true"><?php echo $loop->iw; ?></td>

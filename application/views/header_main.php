@@ -103,17 +103,20 @@
                                 ?>   
                               
                                         <li><span></span><i class="fa fa-cog"></i>METAR</li>
+                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/metar"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Metar</b> </a> </li>
+    <!--                                
                                         <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/grid"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Metar Data</b> </a> </li>
     <!--                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/grids"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Manage metars</b> </a> </li>-->
                                         <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>View Metars</b> </a> </li>
                                         <li><p></p></li>
+                                        <li><span></span><i class="fa fa-cog"></i>SYNOPTICS</li>
+<!--                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/synoptic"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Synoptic</b> </a> </li>-->
+                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/synoptic/synop"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Synoptic</b> </a> </li>
+                                        
                                         <li><span></span><i class="fa fa-cog"></i>DAILY</li>
                                         <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/daily_weather"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Daily Weather</b> </a> </li>
                                         <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/periodic"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Periodic Rainfall</b> </a> </li>
                                         <li><p></p></li>
-                                        <li><span></span><i class="fa fa-cog"></i>SYNOPTICS</li>
-<!--                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/synoptic"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Synoptic</b> </a> </li>-->
-                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/synoptic/synop"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Synoptic</b> </a> </li>
                                         <!--
                                                                                 <li> <a target="myframe" href="<?php echo base_url() . "index.php/synoptic/tab"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Synoptic view</b> </a> </li>
                                         --> 

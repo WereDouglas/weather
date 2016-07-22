@@ -35,6 +35,7 @@ class Synoptic extends CI_Controller {
 
         $this->load->view('form5', $data);
     }
+
     public function synop() {
 
         $query = $this->Md->show('station');
@@ -46,16 +47,33 @@ class Synoptic extends CI_Controller {
         // get($field,$value,$table)
         //$query = $this->Md->get('day', date('Y-m-d'), 'metar');
         // $query = $this->Md->get('day','2015-07-8','metar'); 
-        $query = $this->Md->query("SELECT * FROM synoptic ");
+        
+
+        $gg = 00;
+
+        while ($gg <= 21) {
+          
+
+            $get_result = $this->Md->check_sql('SELECT * FROM synoptic where station ="' . $this->session->userdata('station') . '" AND date ="' . date('Y-m-d') . '" AND gg = "' . sprintf("%02d", $gg) . '"');
+            if ($get_result) {
+                $synoptic = array('approved' => 'F', 'station' => $this->session->userdata('station'), 'date' => date('Y-m-d'), 'gg' => sprintf("%02d", $gg) , 'ii' => '63', 'ir' => '', 'ix' => '', 'h' => '', 'www' => '', 'vv' => '', 'n' => '', 'dd' => '', 'ff' => '', 't' => '', 'td' => '', 'Po' => '', 'gisis' => '', 'hhh' => '', 'rrr' => '', 'tr' => '', 'present' => '', 'past' => '', 'nh' => '', 'cl' => '', 'cm' => '', 'ch' => '', 'Tq' => '', 'Ro' => '', 'R1' => '', 'Tx' => '', 'Tn' => '', 'EE' => '', 'E' => '', 'sss' => '', 'pchange' => '', 'p24' => '', 'rr' => '', 'tr1' => '', 'ns' => '', 'c' => '', 'hs' => '', 'ns1' => '', 'c1' => '', 'hs1' => '', 'ns2' => '', 'c2' => '', 'hs2' => '', 'supplementary' => '', 'wb' => $wb, 'rh' => '', 'vap' => '', 'user' => $this->session->userdata('username'), 'submitted' => date('H:i:s'));
+                $this->Md->save($synoptic, 'synoptic');
+            } 
+
+            $gg = $gg + 3;
+        }
+        $query = $this->Md->query('SELECT * FROM synoptic where station ="' . $this->session->userdata('station') . '" AND date ="' . date('Y-m-d') . '" ');
         if ($query) {
             $data['synop'] = $query;
         } else {
             $data['synop'] = array();
         }
 
+
         $this->load->view('synoptic-original', $data);
     }
-       public function updater() {
+
+    public function updater() {
         $this->load->helper(array('form', 'url'));
 
         if (!empty($_POST)) {
@@ -225,7 +243,7 @@ class Synoptic extends CI_Controller {
 
         if ($station != "") {
 
-            $synoptic = array('approved' => 'F','station' => $station, 'date' => $date, 'time' => $time, 'ir' => $ir, 'ix' => $ix, 'h' => $h, 'www' => $www, 'vv' => $vv, 'n' => $n, 'dd' => $dd, 'ff' => $ff, 't' => $t, 'td' => $td, 'Po' => $Po, 'gisis' => $gisis, 'hhh' => $hhh, 'rrr' => $rrr, 'tr' => $tr, 'present' => $present, 'past' => $past, 'nh' => $nh, 'cl' => $cl, 'cm' => $cm, 'ch' => $ch, 'Tq' => $Tq, 'Ro' => $Ro, 'R1' => $R1, 'Tx' => $Tx, 'Tm' => $Tm, 'EE' => $EE, 'E' => $E, 'sss' => $sss, 'pchange' => $pchange, 'p24' => $p24, 'rr' => $rr, 'tr1' => $tr1, 'ns' => $ns, 'c' => $c, 'hs' => $hs, 'ns1' => $ns1, 'c1' => $c1, 'hs1' => $hs1, 'ns2' => $ns2, 'c2' => $c2, 'hs2' => $hs2, 'supplementary' => $supplementary, 'wb' => $wb, 'rh' => $rh, 'vap' => $vap, 'user' => $user, 'submitted' => date('H:i:s'));
+            $synoptic = array('approved' => 'F', 'station' => $station, 'date' => $date, 'time' => $time, 'ir' => $ir, 'ix' => $ix, 'h' => $h, 'www' => $www, 'vv' => $vv, 'n' => $n, 'dd' => $dd, 'ff' => $ff, 't' => $t, 'td' => $td, 'Po' => $Po, 'gisis' => $gisis, 'hhh' => $hhh, 'rrr' => $rrr, 'tr' => $tr, 'present' => $present, 'past' => $past, 'nh' => $nh, 'cl' => $cl, 'cm' => $cm, 'ch' => $ch, 'Tq' => $Tq, 'Ro' => $Ro, 'R1' => $R1, 'Tx' => $Tx, 'Tm' => $Tm, 'EE' => $EE, 'E' => $E, 'sss' => $sss, 'pchange' => $pchange, 'p24' => $p24, 'rr' => $rr, 'tr1' => $tr1, 'ns' => $ns, 'c' => $c, 'hs' => $hs, 'ns1' => $ns1, 'c1' => $c1, 'hs1' => $hs1, 'ns2' => $ns2, 'c2' => $c2, 'hs2' => $hs2, 'supplementary' => $supplementary, 'wb' => $wb, 'rh' => $rh, 'vap' => $vap, 'user' => $user, 'submitted' => date('H:i:s'));
             $this->Md->save($synoptic, 'synoptic');
 
             $this->session->set_flashdata('msg', '<div class="alert alert-success">

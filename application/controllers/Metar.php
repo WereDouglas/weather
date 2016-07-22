@@ -20,6 +20,68 @@ class Metar extends CI_Controller {
         $this->load->view('metar-grid');
     }
 
+    public function metar() {
+
+        $query = $this->Md->show('station');
+        if ($query) {
+            $data['stations'] = $query;
+        } else {
+            $data['stations'] = array();
+        }
+
+        $tm = 00;
+
+        while ($tm <= 23) {
+// sprintf("%02d", $gg)
+            //$yg =  date('d') . date('H') . "00Z";
+             $yg =  date('d') . sprintf("%02d", $tm) . "00Z";
+            
+            $get_result = $this->Md->check_sql('SELECT * FROM metars where station ="' . $this->session->userdata('station') . '" AND day ="' . date('Y-m-d') . '" AND yg = "' . $yg . '"');
+            if ($get_result) {
+                $met = array('when' => date('Y-m-d H:i:s'), 'station' => $this->session->userdata('station'), 'day' => date('Y-m-d'), 'type' => '', 'cc' => $this->session->userdata('code'), 'yg' => $yg, 'df' => '', 'ww' => '', 'w1' => '', 'nc' => '', 'tt' => '', 'qnh' => '', 'qni' => '', 'qfh' => '', 'qfi' => '', 're' => '', 'trend' => '', 'user' => $this->session->userdata('username'), 'approved' => 'false');
+                $this->Md->save($met, 'metars');
+            }
+
+            $tm = $tm + 1;
+        }
+        $query = $this->Md->query('SELECT * FROM metars where station ="' . $this->session->userdata('station') . '" AND day ="' . date('Y-m-d') . '" ');
+        if ($query) {
+            $data['metars'] = $query;
+        } else {
+            $data['metars'] = array();
+        }
+
+
+        $this->load->view('metar-original', $data);
+    }
+
+    public function updater() {
+        $this->load->helper(array('form', 'url'));
+
+        if (!empty($_POST)) {
+
+            foreach ($_POST as $field_name => $val) {
+                //clean post values
+                $field_id = strip_tags(trim($field_name));
+                $val = strip_tags(trim(mysql_real_escape_string($val)));
+                //from the fieldname:user_id we need to get user_id
+                $split_data = explode(':', $field_id);
+                $user_id = $split_data[1];
+                $field_name = $split_data[0];
+                if (!empty($user_id) && !empty($field_name) && !empty($val)) {
+                    //update the values
+                    $student = array($field_name => $val,'when' => date('Y-m-d H:i:s'), 'user' => $this->session->userdata('username'));
+                    $this->Md->update($user_id, $student, 'metars');
+                    echo "Updated";
+                } else {
+                    echo "Invalid Requests";
+                }
+            }
+        } else {
+            echo "Invalid Requests";
+        }
+    }
+
     public function activate() {
 
         $this->load->helper(array('form', 'url'));
