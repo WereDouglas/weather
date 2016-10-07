@@ -3,6 +3,28 @@ Welcome to the Uganda Wimea project repository
 This project has been written in php 5.4.3 
 
 The Data is stored in Mysql Database and the framework used in CODE IGNITER version 3.0.0 
+Welcome to wimea project repository 
+
+The project has both a web and desktop application 
+The web application is developed using PHP as the core open source scripting language
+Code igniter is used as the base framework (ver 3.2)
+Javascript is used for data validation and dynamic data input in some areas for data binding and asynchronous data model to data source binding 
+Features:
+Daily weather collection
+Metar data collection 
+Synoptic data collection 
+Data reports i.e monthly data reports,rainfall cards,synoptic etc
+
+Installation:
+
+The database is in the folder DB 
+Install wamp/lamp server copy files your server directory 
+Change Database config to match your database settings and you are ready to run
+
+for latest code please find it at https://github.com/wimea-ict/weatherapp/
+
+
+This application has been develped by wimea-ict project team 
 
 
 
