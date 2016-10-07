@@ -22,6 +22,11 @@
 
 
 <div class="span12">
+     CODE: <?php echo $this->session->userdata('code'); ?>
+                          STATION:  <?php echo $this->session->userdata('station'); ?>
+                            NUMBER:  <?php echo $this->session->userdata('number'); ?>
+                           <?php echo $this->session->userdata('username'); ?>
+                           <?php echo $this->session->userdata('role'); ?>         
 
     <h1>
         <?php echo $this->session->userdata('station'); ?>

@@ -62,6 +62,8 @@
                                 </ul>
                             </div>
                         </div>
+                         
+                             
                         <div class="user_admin dropdown"> <a href="javascript:void(0);" data-toggle="dropdown"><span class="user_adminname"> <?php echo $this->session->userdata('role'); ?> :  <?php echo $this->session->userdata('username'); ?> </span> <b class="caret"></b> </a>
                             <ul class="dropdown-menu">
                                 <div class="top_pointer"></div>
@@ -86,51 +88,37 @@
                     <!--\\\\\\\left_nav start \\\\\\-->
 
                     <li>
-                        <ul class="">
-                            <p class="blue">CODE: <?php echo $this->session->userdata('code'); ?></p> 
-                            <p class="blue">STATION:  <?php echo $this->session->userdata('station'); ?></p> 
-                            <p class="red"> NUMBER:  <?php echo $this->session->userdata('number'); ?></p> 
-                            <p class="pink"> <h6> <?php echo $this->session->userdata('username'); ?></h6></p>
-                            <p class="pink"><?php echo $this->session->userdata('role'); ?></p>
-                        </ul>
-                    </li>
-
-                    <div class="left_nav_slidebar">
-                        <ul>
+                       
+                           <ul>
                             <?php
                             // echo $this->session->userdata('image');
                             if ($this->session->userdata('role') == "Data" || $this->session->userdata('role') == "Observer" || ($this->session->userdata('role') == "Administrator" && $this->session->userdata('station') != " ")) {
-                                ?>   
-                              
-                                        <li><span></span><i class="fa fa-cog"></i>METAR</li>
-                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/metar"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Metar</b> </a> </li>
+                                ?>                              
+                                     
+                                          <br>  <i class="fa fa-circle"></i> <a target="myframe" href="<?php echo base_url() . "index.php/metar/metar"; ?>"> <span>&nbsp;</span>  <b>Metar</b> </a>
     <!--                                
-                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/grid"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Metar Data</b> </a> </li>
-    <!--                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/grids"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Manage metars</b> </a> </li>-->
-                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>View Metars</b> </a> </li>
-                                        <li><p></p></li>
-                                        <li><span></span><i class="fa fa-cog"></i>SYNOPTICS</li>
-<!--                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/synoptic"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Synoptic</b> </a> </li>-->
-                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/synoptic/synop"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Synoptic</b> </a> </li>
+                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/grid"; ?>"> <span>&nbsp;</span>  <b>Metar Data</b> </a> </li>
+    <!--                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/grids"; ?>"> <span>&nbsp;</span>  <b>Manage metars</b> </a> </li>-->
+                                        <br>  <i class="fa fa-circle"></i> <a target="myframe" href="<?php echo base_url() . "index.php/metar/"; ?>"> <span>&nbsp;</span>  <b>View Metars</b> </a> 
+                                  
+                                     <br>   SYNOPTICS
+<!--                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/synoptic"; ?>"> <span>&nbsp;</span>  <b>Synoptic</b> </a> </li>-->
+                                      <br>   <a target="myframe" href="<?php echo base_url() . "index.php/synoptic/synop"; ?>"> <span>&nbsp;</span>  <b>Synoptic</b> </a> 
                                         
-                                        <li><span></span><i class="fa fa-cog"></i>DAILY</li>
-                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/daily_weather"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Daily Weather</b> </a> </li>
-                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/periodic"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Periodic Rainfall</b> </a> </li>
-                                        <li><p></p></li>
-                                        <!--
-                                                                                <li> <a target="myframe" href="<?php echo base_url() . "index.php/synoptic/tab"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Synoptic view</b> </a> </li>
-                                        --> 
-                                        <li><p></p></li>
-                                        <li><span> </span><i class="fa fa-cog"></i>ARCHIVE</li>
-                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/archive/add_archive"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Archive</b> </a> </li>
-                                        <li><p></p></li>
-                                        <li><span></span><i class="fa fa-cog"></i>FORMS</li>
-                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/add_metar/"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Metar Form </b> </a> </li>
+                                     <br> DAILY
+                                      <br>  <i class="fa fa-circle"></i> <a target="myframe" href="<?php echo base_url() . "index.php/metar/daily_weather"; ?>"> <span>&nbsp;</span>  <b>Daily Weather</b> </a> 
+                                    <br>  <i class="fa fa-circle"></i> <a target="myframe" href="<?php echo base_url() . "index.php/metar/periodic"; ?>"> <span>&nbsp;</span>  <b>Periodic Rainfall</b> </a> 
+                                     
+                                <br>  ARCHIVE
+                                     <br>  <i class="fa fa-circle"></i> <a target="myframe" href="<?php echo base_url() . "index.php/archive/add_archive"; ?>"> <span>&nbsp;</span>  <b>Archive</b> </a>
+                                        
+                                 <br>      FORMS
+                                       <br>  <i class="fa fa-circle"></i><a target="myframe" href="<?php echo base_url() . "index.php/metar/add_metar/"; ?>"> <span>&nbsp;</span>  <b>Metar Form </b> </a> 
 
-                                        <li> <a href="<?php echo base_url() . "index.php/metar/everyday"; ?>" target="myframe"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Daily weather</b> </a> </li>
-                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/rainfall"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Periodic Rainfall</b> </a> </li>
-                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/synoptic/"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Synoptic tabular form</b> </a> </li>
-                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/synoptic/"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Table</b> </a> </li>
+                                       <br>  <i class="fa fa-circle"></i> <a href="<?php echo base_url() . "index.php/metar/everyday"; ?>" target="myframe"> <span>&nbsp;</span>  <b>Daily weather</b> </a> 
+                                        <br>  <i class="fa fa-circle"></i>  <a target="myframe" href="<?php echo base_url() . "index.php/metar/rainfall"; ?>"> <span>&nbsp;</span>  <b>Periodic Rainfall</b> </a>
+<!--                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/synoptic/"; ?>"> <span>&nbsp;</span>  <b>Synoptic tabular form</b> </a> </li>
+                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/synoptic/"; ?>"> <span>&nbsp;</span>  <b>Table</b> </a> </li>-->
 
                                    
                                 
@@ -144,58 +132,62 @@
                             <!--                            <li class="left_nav_active theme_border"><a href="javascript:void(0);"><i class="fa fa-home"></i> DASHBOARD <span class="left_nav_pointer"></span> <span class="plus"><i class="fa fa-plus"></i></span> </a>
                                                             <ul class="opened" style="display:block">
                                                                 <li> <a href="<?php echo base_url() . "index.php/welcome/start"; ?>" target="myframe"> <span>&nbsp;</span> <i class="fa fa-circle theme_color"></i> <b class="theme_color">Dashboard</b> </a> </li>
-                                                                <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Metar book</b> </a> </li>
-                                                                <li> <a target="myframe" href="<?php echo base_url() . "index.php/synoptic/"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Synoptic tabular form</b> </a> </li>
-                                                                <li> <a target="myframe" href="<?php echo base_url() . "index.php/synoptic/tab"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Synoptic view</b> </a> </li>
+                                                                <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar"; ?>"> <span>&nbsp;</span>  <b>Metar book</b> </a> </li>
+                                                                <li> <a target="myframe" href="<?php echo base_url() . "index.php/synoptic/"; ?>"> <span>&nbsp;</span>  <b>Synoptic tabular form</b> </a> </li>
+                                                                <li> <a target="myframe" href="<?php echo base_url() . "index.php/synoptic/tab"; ?>"> <span>&nbsp;</span>  <b>Synoptic view</b> </a> </li>
                                                             </ul>
                                                         </li>-->
 
-                                <li> <a href="javascript:void(0);"> <i class="fa fa-tasks"></i>INPUT REPORTS<span class="plus"><i class="fa fa-plus"></i></span></a> </li>
+                              <br>  INPUT REPORTS
 
-                                <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/rainfall_records"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Daily weather</b> </a> </li>
-                                <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/view_metar"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Metar</b> </a> </li>
-                                <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/view_rainfall"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Periodic Rainfall</b> </a> </li>
-                                <li> <a target="myframe" href="<?php echo base_url() . "index.php/archive"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Archive</b> </a> </li>
-
-
-
-                                <li> <a href="javascript:void(0);"> <i class="fa fa-users icon"></i> APPS <span class="plus"><i class="fa fa-plus"></i></span> </a></li>
-
-                                <li> <a href="<?php echo base_url() . "file/Wimea.msi"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Desktop</b> </a> </li>
-                                <li> <a href="<?php echo base_url() . "file/Wimea.apk"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Mobile</b> </a> </li>
+                              <br>  <i class="fa fa-circle"></i> <a target="myframe" href="<?php echo base_url() . "index.php/metar/rainfall_records"; ?>"> <span>&nbsp;</span>  <b>Daily weather</b> </a> 
+<br>  <i class="fa fa-circle"></i><a target="myframe" href="<?php echo base_url() . "index.php/metar/view_metar"; ?>"> <span>&nbsp;</span>  <b>Metar</b> </a> 
+                               <br>  <i class="fa fa-circle"></i> <a target="myframe" href="<?php echo base_url() . "index.php/metar/view_rainfall"; ?>"> <span>&nbsp;</span>  <b>Periodic Rainfall</b> </a>
+                               <br>  <i class="fa fa-circle"></i><a target="myframe" href="<?php echo base_url() . "index.php/archive"; ?>"> <span>&nbsp;</span>  <b>Archive</b> </a> 
 
 
 
-                                <li> <a href="javascript:void(0);"> <i class="fa fa-folder-open-o"></i>GENERAL REPORTS<span class="plus"><i class="fa fa-plus"></i></span> </a>
-                                     </li>
-                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/aws/"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>AWS</b> </a> </li>
-                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/welcome/reports/"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Rainfall card</b> </a> </li>
-                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/dekadal/"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Dekadal</b> </a> </li>
-                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/rainfall/report"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Rainfall report(6a)</b> </a> </li>
-                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/monthly/"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Monthly summary</b> </a> </li>
-                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/climatological/"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Climatological observation</b> </a> </li>
-                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/metar/view_metar"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Metar</b> </a> </li>
+                              <br>   APPS 
+
+                                <br>  <i class="fa fa-circle"></i> <a href="<?php echo base_url() . "file/Wimea.msi"; ?>"> <span>&nbsp;</span>  <b>Desktop</b> </a> 
+                               <br>  <i class="fa fa-circle"></i><a href="<?php echo base_url() . "file/Wimea.apk"; ?>"> <span>&nbsp;</span>  <b>Mobile</b> </a> 
+
+
+
+                            <br>   GENERAL REPORTS
+                                     
+                                        <br>  <i class="fa fa-circle"></i><a target="myframe" href="<?php echo base_url() . "index.php/aws/"; ?>"> <span>&nbsp;</span>  <b>AWS</b> </a>
+                                        <br>  <i class="fa fa-circle"></i> <a target="myframe" href="<?php echo base_url() . "index.php/welcome/reports/"; ?>"> <span>&nbsp;</span>  <b>Rainfall card</b> </a> 
+<br>  <i class="fa fa-circle"></i><a target="myframe" href="<?php echo base_url() . "index.php/dekadal/"; ?>"> <span>&nbsp;</span>  <b>Dekadal</b> </a> 
+                                       <br>  <i class="fa fa-circle"></i><a target="myframe" href="<?php echo base_url() . "index.php/rainfall/report"; ?>"> <span>&nbsp;</span>  <b>Rainfall report(6a)</b> </a> </li>
+                                    <br>  <i class="fa fa-circle"></i> <a target="myframe" href="<?php echo base_url() . "index.php/monthly/"; ?>"> <span>&nbsp;</span>  <b>Monthly summary</b> </a> 
+                                       <br>  <i class="fa fa-circle"></i> <a target="myframe" href="<?php echo base_url() . "index.php/climatological/"; ?>"> <span>&nbsp;</span>  <b>Climatological observation</b> </a>
+                                        <br>  <i class="fa fa-circle"></i> <a target="myframe" href="<?php echo base_url() . "index.php/metar/view_metar"; ?>"> <span>&nbsp;</span>  <b>Metar</b> </a>
                                    
                                
 
-                                <li> <a href="javascript:void(0);"> <i class="fa fa-cog"></i> SETTINGS <span class="plus"><i class="fa fa-plus"></i></span></a> </li>
-                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/station/add"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Add Station</b> </a> </li>
+                             <br>  SETTINGS 
+                                      <br>  <i class="fa fa-circle"></i> <a target="myframe" href="<?php echo base_url() . "index.php/station/add"; ?>"> <span>&nbsp;</span>  <b>Add Station</b> </a> 
 
-                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/station/view"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>View Stations</b> </a> </li>
-                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/user/add"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Add User</b> </a> </li>
-                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/user/view"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>View Users</b> </a> </li>
-    <!--                                    <li> <a target="myframe" href="<?php echo base_url() . "index.php/role/"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Roles</b> </a> </li>
+                                       <br>  <i class="fa fa-circle"></i><a target="myframe" href="<?php echo base_url() . "index.php/station/view"; ?>"> <span>&nbsp;</span>  <b>View Stations</b> </a> 
+                                       <br>  <i class="fa fa-circle"></i><a target="myframe" href="<?php echo base_url() . "index.php/user/add"; ?>"> <span>&nbsp;</span>  <b>Add User</b> </a> 
+                                       <br>  <i class="fa fa-circle"></i> <a target="myframe" href="<?php echo base_url() . "index.php/user/view"; ?>"> <span>&nbsp;</span>  <b>View Users</b> </a> 
+    <!--                                    <li> <a target="myframe" href="<?php echo base_url() . "index.php/role/"; ?>"> <span>&nbsp;</span>  <b>Roles</b> </a> </li>
                                         -->
 
-                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/logs/"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Logs</b> </a> </li>
-                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/element/"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Elements</b> </a> </li>
-                                        <li> <a target="myframe" href="<?php echo base_url() . "index.php/instrument/"; ?>"> <span>&nbsp;</span> <i class="fa fa-circle"></i> <b>Instruments</b> </a> </li>
+                                       <br>  <i class="fa fa-circle"></i> <a target="myframe" href="<?php echo base_url() . "index.php/logs/"; ?>"> <span>&nbsp;</span>  <b>Logs</b> </a> 
+                                       <br>  <i class="fa fa-circle"></i> <a target="myframe" href="<?php echo base_url() . "index.php/element/"; ?>"> <span>&nbsp;</span>  <b>Elements</b> </a> 
+                                       <br>  <i class="fa fa-circle"></i><a target="myframe" href="<?php echo base_url() . "index.php/instrument/"; ?>"> <span>&nbsp;</span>  <b>Instruments</b> </a>
 
                                    
                                
                             <?php }
                             ?>
                         </ul>
+                    </li>
+
+                    <div class="left_nav_slidebar">
+                     
                     </div>
                 </div>
             </div>
