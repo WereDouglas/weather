@@ -43,9 +43,9 @@
                         <div class="login-container">
                             <div class="row-fluid">
                                 <div class="center">
-                                    <h1><span class="red">Weather Data Information System</span></h1>  
+                                    <h1><span class="red">WIMEA-ICT Weather data repository</span></h1>  
 
-                                    <h4 class="blue">&copy; AWS</h4>
+                                    <h4 class="blue">&copy; WIMEA-ICT</h4>
                                 </div>
                             </div>
 

@@ -334,9 +334,9 @@ echo $variations;
             $result = $this->Md->get('email', $email, 'user');
             foreach ($result as $res) {
                 $key = $email;
-                $password = $this->encrypt->decode($res->password, $key);
+                $password = $res->password;
 
-                if ($password_now == $password) {
+                if (md5($password_now) == $password) {
 
                     $query2 = $this->Md->query("select * from user WHERE email='" . $email . "'");
                     $results = $query2;
